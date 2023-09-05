@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('dispenses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id');
+            $table->string('client_id'); // Use string data type
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
             $table->text('Description')->nullable();
-
-
             $table->timestamps();
         });
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-
 class CategoryController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::get();
+
+        return view('all_categories', compact('categories'));
     }
 
     /**
@@ -21,15 +23,24 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->save();
+
+        return redirect()->route('all_categories')->with('success_message', 'Category created successfully');
+
     }
 
     /**
@@ -37,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**

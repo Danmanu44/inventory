@@ -16,11 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('quantity');
-
-
             $table->unsignedBigInteger('product_category_id');
-            $table->unsignedDecimal('price', 10, 1);
-          
+            $table->decimal('price', 10, 1);
             $table->timestamps();
         });
     }

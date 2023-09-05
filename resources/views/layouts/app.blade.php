@@ -21,19 +21,22 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+
+    <link href="{{ asset('assets/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
+
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     </head>
     <body class="font-sans antialiased">
         <div class="">
             {{-- @include('layouts.navigation') --}}
-            <div id="preloader">
+            {{-- <div id="preloader">
                 <div class="loader">
                     <svg class="circular" viewBox="25 25 50 50">
                         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
                     </svg>
                 </div>
-            </div>
+            </div> --}}
             <!--*******************
                 Preloader end
             ********************-->
@@ -480,8 +483,37 @@
         <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
 
+    <!-- Toastr -->
+    <script src="{{asset('assets/plugins/toastr/js/toastr.min.js')}}"></script>
+    <script src="{{ asset('assets/plugins/toastr/js/toastr.init.js') }}"></script>
 
         <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
+        <script>
+            // Function to show success notification with a dynamic message
+            function showSuccessNotification(message) {
+                toastr.success(message, 'Success', {
+                    positionClass: 'toast-top-right', // You can change the position here
+                });
+                }
+
+                function showErrorNotification(message) {
+                    toastr.error(message, 'Error', {
+                        positionClass: 'toast-top-right', // You can change the position here
+                    });
+                }
+
+                // Check if a success message exists in the session and show the notification
+                @if(session('success_message'))
+                    showSuccessNotification('{{ session('success_message') }}');
+                @endif
+
+                // Check if an error message exists in the session and show the notification
+                @if(session('error_message'))
+                    showErrorNotification('{{ session('error_message') }}');
+                @endif
+
+
+        </script>
 
     </body>
 </html>

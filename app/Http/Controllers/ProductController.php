@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(10);
+
+        return view('all_product', compact('products'));
     }
 
     /**
@@ -21,15 +24,37 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+
+        return view('product', compact('categories'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Validate the form data here
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'category' => 'required|exists:categories,id', // Validate that the category exists in the database
+            'description' => 'nullable|string',
+        ]);
+
+        // Create a new product using the validated data
+        $product = Product::create([
+            'name' => $validatedData['name'],
+            'price' => $validatedData['price'],
+            'quantity' => $validatedData['quantity'],
+            'product_category_id' => $validatedData['category'],
+            'description' => $validatedData['description'],
+        ]);
+
+        // Redirect to a success page or do something else
+        return redirect()->route('add_product')->with('success_message', 'Product created successfully');
     }
 
     /**
