@@ -10,8 +10,6 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('client.add')}}">Add Beneficiary</a></li>
-
 
                             {{-- <li><a href="./index.html">Home 1</a></li> --}}
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
@@ -29,11 +27,32 @@
                     </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Stores</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('all_store') }}">View Store</a></li>
+                            <li><a href="{{route('add_store')}}">Add Store</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Categories</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('all_categories') }}">All Categories</a></li>
                             <li><a href="{{ route('add_categories') }}">Add Category</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Beneficiaries</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="#">All Baneficiary</a></li>
+                            <li><a href="{{route('client.create')}}">Add Baneficiary</a></li>
 
                         </ul>
                     </li>
@@ -48,15 +67,14 @@
 
                         </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
+                    <li class="nav-label">Item Product</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Item</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Inbox</a></li>
-                            <li><a href="./email-read.html">Read</a></li>
-                            <li><a href="./email-compose.html">Compose</a></li>
+                            <li><a href="{{ route('all_item') }}">All items</a></li>
+                            <li><a href="{{ route('add_item') }}">Add Item</a></li>
                         </ul>
                     </li>
                     <li>

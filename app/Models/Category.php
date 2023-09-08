@@ -14,10 +14,10 @@ class Category extends Model
         'name'
     ];
 
-    // Category.php
-public function products()
-{
-    return $this->hasMany(Product::class, );
-}
+    // Define the relationship to the Product model
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id'); // 'category_id' is the foreign key column in the products table
+    }
 
 }

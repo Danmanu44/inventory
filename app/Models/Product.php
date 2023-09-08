@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Item;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -15,14 +16,20 @@ class Product extends Model
         'name',
         'description',
         'quantity',
-        'product_category_id',
+        'category_id',
         'price',
 
     ];
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'product_category_id');
+        return $this->belongsTo(Category::class, 'category_id'); // 'category_id' is the foreign key column in the products table
     }
+
+    // Product Model
+public function items()
+{
+    return $this->hasMany(Item::class);
+}
 
 }

@@ -37,21 +37,13 @@ class ProductController extends Controller
     {
         // Validate the form data here
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
-            'category' => 'required|exists:categories,id', // Validate that the category exists in the database
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0.01',
+            'category_id' => 'required|exists:categories,id', // Make sure the category exists in the "categories" table
             'description' => 'nullable|string',
         ]);
 
-        // Create a new product using the validated data
-        $product = Product::create([
-            'name' => $validatedData['name'],
-            'price' => $validatedData['price'],
-            'quantity' => $validatedData['quantity'],
-            'product_category_id' => $validatedData['category'],
-            'description' => $validatedData['description'],
-        ]);
+        Product::create($validatedData);
 
         // Redirect to a success page or do something else
         return redirect()->route('add_product')->with('success_message', 'Product created successfully');

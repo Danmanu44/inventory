@@ -2,42 +2,41 @@
     <div class="content-body">
         <div class="col-lg-12 p-4">
             <div class="card">
+                <div class="card-header mt-3">
+                    <h4 class="card-title">All Item Products</h4>
+                    <a href="{{ route('add_item') }}" class="btn btn-success float-right">Create Item</a>
+                </div>
                 <div class="card-body">
-                    <h4 class="card-title">All Products</h4>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Price</th>
+                                    <th>Product Name</th>
                                     <th>Category</th>
-                                    <th>Description</th>
+                                    <th>Store Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($items as $item)
                                 <tr>
-                                    <td>{{ $product->name }}</td>
-                                    <td>₦{{ $product->price }}</td>
-                                    <td>{{ optional($product->category)->name }}</td>
-                                    <td>{{ $product->description }}</td>
+                                    <td>{{ $item->product->name }}</td>
+                                    <td>{{ optional($item->product->category)->name }}</td>
+                                    <td>{{ optional($item->store)->name }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>₦{{ $item->product->price }}</td>
                                     <td>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
                                             <i class="fa fa-pencil color-muted"></i>
                                         </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Close">
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="fa fa-close color-danger"></i>
                                         </a>
                                     </td>
-
-
-
                                 </tr>
                                 @endforeach
-
-                                <!-- Display pagination links -->
-                                {{ $products->links() }}
                             </tbody>
                         </table>
                     </div>
