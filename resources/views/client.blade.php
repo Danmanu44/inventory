@@ -10,8 +10,8 @@
                         <form action="{{ route('client.store') }}" method="POST">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" name="beneficiary" class="form-control @error('beneficiary') is-invalid @enderror" placeholder="Beneficiary ID" value="{{ old('beneficiary') }}">
-                                @error('beneficiary')
+                                <input type="text" name="custom_id" class="form-control @error('custom_id') is-invalid @enderror" placeholder="custom_id ID" value="{{ old('custom_id') }}">
+                                @error('custom_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

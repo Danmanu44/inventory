@@ -58,9 +58,9 @@
         </div>
 
                 <!-- Check if there are dispense records -->
-                @if($dispenses->isNotEmpty())
+                {{-- @if($dispenses->isNotEmpty()) --}}
 
-                <div class="row justify-content-center">
+                {{-- <div class="row justify-content-center">
 
                     <div class="col-10">
                         <div class="card border-primary">
@@ -101,16 +101,16 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                             </div>
                             <div class="card-footer"><h2>Total Amount : <strong class="text-dark">{{ $dispense->calculateAmount() }}</strong></strong></h2>
                             </div>
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
 
-                @endif
+                {{-- @endif --}}
 
 
 

@@ -7,6 +7,8 @@ use App\Http\Requests\StoreDispenseRequest;
 use App\Http\Requests\UpdateDispenseRequest;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Client;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,10 +21,14 @@ class DispenseController extends Controller
     public function index()
     {
         $products = Product::get();
-        $dispenses = Dispense::where('client_id', auth()->user()->client_id)->get();
-        $user = User::where('client_id', auth()->user()->client_id)->get();
+        // $dispenses = Dispense::where('client_id', auth()->user()->client_id)->get();
+        // $client = Client::where('custom_id', auth()->user()->client_id)->get();
+        $client=[];
 
-        return view('dispense', compact('products', 'dispenses', 'user'));
+        $dispenses=[];
+        return view('dispense', compact('products', 'dispenses', 'client'));
+        // return view('dispense', compact('products'));
+
 
     }
 
@@ -63,18 +69,18 @@ class DispenseController extends Controller
             $product->quantity -= $request->input('quantity');
             $product->save();
 
-                    // Retrieve the user based on client_id
-        $user = DB::table('users')
+                    // Retrieve the clients based on client_id
+        $client = DB::table('clients')
             ->where('client_id', $request->input('beneficiary_id'))
             ->first();
 
-        if (!$user) {
+        if (!$client) {
             return redirect()->route('add_dispense')->with('error_message', 'Beneficiary not found');
         }
 
         // Create a new dispense record
         Dispense::create([
-            'client_id' => $user->client_id,
+            'client_id' => $client->client_id,
             'product_id' => $product->id,
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),

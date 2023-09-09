@@ -34,7 +34,7 @@ class ClientController extends Controller
     {
         // Validate the form data
         $validatedData = $request->validate([
-            'beneficiary' => 'required',
+            'custom_id' => 'required',
             'name' => 'required',
             'phone_number' => 'required',
             'ward' => 'required',
