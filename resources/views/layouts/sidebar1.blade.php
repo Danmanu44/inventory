@@ -51,7 +51,7 @@
                             <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Beneficiaries</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">All Baneficiary</a></li>
+                            <li><a href="{{route('client.index')}}">All Baneficiary</a></li>
                             <li><a href="{{route('client.create')}}">Add Baneficiary</a></li>
 
                         </ul>

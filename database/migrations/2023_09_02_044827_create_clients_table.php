@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('beneficiary');
             $table->string('name');
-            $table->integer('phone_number');
+            $table->text('phone_number');
             $table->text('address')->nullable();
             $table->text('ward')->nullable();
             $table->text('poll_unit')->nullable();
-            $table->unsignedBigInteger('product_category_id');
-            $table->unsignedDecimal('price', 10, 1);
 
             $table->timestamps();
         });

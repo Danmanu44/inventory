@@ -14,6 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $clients= Client::all();
+        return view('all_clients',compact('clients'));
 
     }
 
@@ -41,10 +43,17 @@ class ClientController extends Controller
         ]);
 
         // Create a new beneficiary record
-        Client::create($validatedData);
+        try {
+            Client::create($validatedData);
+        } catch (Throwable $th) {
+            // Log the exception
+            logger()->error($th);
+            // Return an error message
+            return response()->json(['message' => 'Error creating client'], 400);
+        }
 
         // Redirect back with a success message
-        return redirect()->route('beneficiary.index')->with('success_message', 'Beneficiary added successfully');
+        return redirect()->route('client.index')->with('success_message', 'Beneficiary added successfully');
     }
 
 

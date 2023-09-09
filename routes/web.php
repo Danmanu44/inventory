@@ -57,6 +57,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
+    Route::get('/client/index', [ClientController::class, 'index'])->name('client.index');
+
 
     Route::get('/item/all_item', [ItemController::class,'index'])->name('all_item');
     Route::get('/item/add_item', [ItemController::class, 'create'])->name('add_item');
