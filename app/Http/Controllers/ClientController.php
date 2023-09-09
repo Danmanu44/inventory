@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 
@@ -13,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -21,7 +22,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client');
     }
 
     /**
@@ -29,27 +30,23 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the form data here
+        // Validate the form data
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'phone' => 'required|numeric',
-            'quantity' => 'required|integer',
-            'category' => 'required|exists:categories,id', // Validate that the category exists in the database
-            'description' => 'nullable|string',
+            'beneficiary' => 'required',
+            'name' => 'required',
+            'phone_number' => 'required',
+            'ward' => 'required',
+            'polling_unit' => 'required',
+            'address' => 'required',
         ]);
 
-        // Create a new product using the validated data
-        $product = Product::create([
-            'name' => $validatedData['name'],
-            'price' => $validatedData['price'],
-            'quantity' => $validatedData['quantity'],
-            'product_category_id' => $validatedData['category'],
-            'description' => $validatedData['description'],
-        ]);
+        // Create a new beneficiary record
+        Client::create($validatedData);
 
-        // Redirect to a success page or do something else
-        return redirect()->route('add_product')->with('success_message', 'Product created successfully');
+        // Redirect back with a success message
+        return redirect()->route('beneficiary.index')->with('success_message', 'Beneficiary added successfully');
     }
+
 
     /**
      * Display the specified resource.

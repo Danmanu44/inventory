@@ -30,8 +30,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Define the characters you want to include
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -39,25 +38,26 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $randomCharacters = '';
+        // // Define the characters you want to include
+        // $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-        // Generate a random string of characters
-        for ($i = 0; $i < 4; $i++) {
-            $randomCharacters .= $characters[rand(0, strlen($characters) - 1)];
-        }
+        // $randomCharacters = '';
 
-        $randomNumber = mt_rand(1000000, 9999999);
+        // // Generate a random string of characters
+        // for ($i = 0; $i < 4; $i++) {
+        //     $randomCharacters .= $characters[rand(0, strlen($characters) - 1)];
+        // }
 
-        $client_id = $randomNumber . $randomCharacters;
+        // $randomNumber = mt_rand(1000000, 9999999);
 
-        // Debug the client_id generation
-        // dd($client_id);
+        // $client_id = $randomNumber . $randomCharacters;
+
+
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'client_id' => $client_id,
         ]);
 
         event(new Registered($user));
