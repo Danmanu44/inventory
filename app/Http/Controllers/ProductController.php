@@ -38,6 +38,7 @@ class ProductController extends Controller
         // Validate the form data here
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            'unit'=>'required|string|max:20',
             'price' => 'required|numeric|min:0.01',
             'category_id' => 'required|exists:categories,id', // Make sure the category exists in the "categories" table
             'description' => 'nullable|string',

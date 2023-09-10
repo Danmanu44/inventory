@@ -10,21 +10,27 @@
                         <div class="basic-form">
                             <form method="POST" action="{{ route('products.store') }}">
                                 @csrf <!-- Add CSRF token field for security -->
-    
+
                                 <div class="input-group mb-3">
                                     <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
                                 </div>
                                 @if ($errors->has('name'))
                                     <div class="text-danger mb-3">{{ $errors->first('name') }}</div>
                                 @endif
-    
+                                <div class="input-group mb-3">
+                                    <input type="text" name="unit" class="form-control" placeholder="unit" value="{{ old('unit') }}">
+                                </div>
+                                @if ($errors->has('unit'))
+                                    <div class="text-danger mb-3">{{ $errors->first('unit') }}</div>
+                                @endif
+
                                 <div class="input-group mb-3">
                                     <input type="number" name="price" class="form-control" placeholder="Price" value="{{ old('price') }}">
                                 </div>
                                 @if ($errors->has('price'))
                                     <div class="text-danger mb-3">{{ $errors->first('price') }}</div>
                                 @endif
-    
+
                                 <div class="input-group mb-3">
                                     <select name="category_id" class="form-control">
                                         <option value="">-- Select Category --</option>
@@ -38,7 +44,7 @@
                                 @if ($errors->has('category_id'))
                                     <div class="text-danger mb-3">{{ $errors->first('category_id') }}</div>
                                 @endif
-    
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend"><span class="input-group-text">Description</span></div>
                                     <textarea name="description" class="form-control">{{ old('description') }}</textarea>
@@ -46,7 +52,7 @@
                                 @if ($errors->has('description'))
                                     <div class="text-danger mb-3">{{ $errors->first('description') }}</div>
                                 @endif
-    
+
                                 <div class="mt-3 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Save Product</button>
                                 </div>

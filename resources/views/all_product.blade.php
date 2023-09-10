@@ -9,6 +9,8 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
                                     <th>Price</th>
                                     <th>Category</th>
                                     <th>Description</th>
@@ -19,6 +21,10 @@
                                 @foreach($products as $product)
                                 <tr>
                                     <td>{{ $product->name }}</td>
+                                    <td>{{$product->quantity}}</td>
+
+
+                                    <td>{{$product->unit}}</td>
                                     <td>₦{{ $product->price }}</td>
                                     <td>{{ optional($product->category)->name }}</td>
                                     <td>{{ $product->description }}</td>

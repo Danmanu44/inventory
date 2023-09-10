@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDispenseRequest;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Item;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,14 +21,37 @@ class DispenseController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
-        // $dispenses = Dispense::where('client_id', auth()->user()->client_id)->get();
-        // $client = Client::where('custom_id', auth()->user()->client_id)->get();
-        $client=[];
 
-        $dispenses=[];
+         return view('dispense_client_verify');
+
+
+    }
+    public function reload($client_id)
+    {
+        $products = Product::get();
+
+        $dispenses = Dispense::where('client_id',$client_id)->get();
+        $client = Client::find( $client_id);
+
         return view('dispense', compact('products', 'dispenses', 'client'));
         // return view('dispense', compact('products'));
+
+
+    }
+    public function verify(Request $request){
+        $request->validate([
+            'beneficiary_id'=>'required|custom_id_exists_in_clients'
+        ]);
+        $client = Client::where('custom_id', $request->beneficiary_id)->first();
+
+        $products = Product::get();
+
+        $dispenses = Dispense::where('client_id',$client->id)->get();
+
+        return view('dispense', compact('products', 'dispenses', 'client'));
+
+
+
 
 
     }
@@ -47,14 +71,15 @@ class DispenseController extends Controller
     {
         // Validate the form data
         $request->validate([
-            'beneficiary_id' => 'required|exists_in_users', // Use the custom rule here
+            'beneficiary_id' => 'required|exists_in_clients', // Use the custom rule here
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
             'description' => 'nullable',
         ]);
 
-        // Retrieve the selected product
-        $product = Product::find($request->input('product_id'));
+        // Retrieve the selected product quantity from items table
+        $product = product::find($request->input('product_id'));
+
 
         // Check if the product exists
         if (!$product) {
@@ -67,12 +92,12 @@ class DispenseController extends Controller
         } else {
             // Reduce the product quantity by the requested amount
             $product->quantity -= $request->input('quantity');
-            $product->save();
+            $product->update();
+
 
                     // Retrieve the clients based on client_id
-        $client = DB::table('clients')
-            ->where('client_id', $request->input('beneficiary_id'))
-            ->first();
+        $client = Client::find($request->input('beneficiary_id'));
+
 
         if (!$client) {
             return redirect()->route('add_dispense')->with('error_message', 'Beneficiary not found');
@@ -80,13 +105,15 @@ class DispenseController extends Controller
 
         // Create a new dispense record
         Dispense::create([
-            'client_id' => $client->client_id,
-            'product_id' => $product->id,
+            'client_id' => $client->id,
+            'product_id' => $request->input('product_id'),
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),
         ]);
+        $products = Product::get();
+        $dispenses = Dispense::all()->where('client_id', $client->id);
 
-        return redirect()->route('add_dispense')->with('success_message', 'Dispense record created successfully');
+        return redirect()->route('dispense.reload',['client_id'=>$client->id])->with('success_message', 'Dispense record created successfully');
 
 
         }
@@ -120,8 +147,19 @@ class DispenseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dispense $dispense)
+    public function destroy($id)
     {
         //
+        $dispense= Dispense::findOrFail($id);
+        // dd($dispense);
+        $client_id= $dispense->client_id;
+
+        $dispense->product->quantity+= $dispense->quantity;
+        $dispense->product->update();
+
+
+        $dispense->delete();
+        return redirect()->route('dispense.reload',['client_id'=>$client_id])->with('success_message', 'Dispense record deleted successfully');
+
     }
 }

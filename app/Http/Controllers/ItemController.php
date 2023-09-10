@@ -54,57 +54,66 @@ class ItemController extends Controller
         // Set the valid store_id you want to associate with the item
         $destinationStoreId = 1; // Change to the actual ID of the General Store
 
-        // Check if the item with the same product and store already exists
-        $existingItem = Item::where('product_id', $validatedData['product_id'])
-        ->where('store_id', $destinationStoreId)
-        ->first();
+        $product= Product::find($validatedData['product_id']);
 
-        $item = null;
+        try {
+            // increase the product quantity
+            $product->quantity += $validatedData['quantity'];
 
-        if ($existingItem) {
-        // If the item exists, update the quantity
-        $existingItem->quantity += $validatedData['quantity'];
-        $existingItem->save();
-        } else {
-        // If the item doesn't exist, create a new item with the destination store
-        $item = new Item([
-            'product_id' => $validatedData['product_id'],
-            'store_id' => $destinationStoreId,
-            'quantity' => $validatedData['quantity'],
-        ]);
+            $item = new Item([
+                'product_id' => $validatedData['product_id'],
+                'store_id' => $destinationStoreId,
+                'quantity' => $validatedData['quantity'],
+            ]);
 
-        // Save the item to the database
-        $item->save();
+            // Save the item to the database
+            $item->save();
+
+            if ($item) {
+
+                // update the product
+                $product->update();
+
+                // Retrieve the current quantity in the destination store
+                $destinationStore = Store::findOrFail($destinationStoreId);
+                $currentQuantity = $destinationStore->items()->where('product_id', $validatedData['product_id'])->sum('quantity');
+
+                // Calculate the new quantity by adding the incoming quantity
+                $newQuantity = $currentQuantity + $item->quantity;
+
+                // Update the destination store with the new quantity
+                $destinationStore->items()->updateOrCreate(
+                    ['product_id' => $validatedData['product_id']],
+                    ['quantity' => $newQuantity]
+                );
+
+                // Create a transaction record
+                $transaction = new Transaction([
+                    'from_store' => $destinationStoreId,
+                    'destination_store' => $destinationStoreId,
+                    'user_id' => auth()->user()->id,
+                    'acceptance_status' => null,
+                    'item_id' => $item->id,
+                ]);
+
+                $transaction->save();
+                }
+
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            // abort(500);
+
+            return redirect()->route('add_item')->with('error_message', 'Server error' );
+
         }
 
-        // Check if $item is defined before using it in the transaction creation code
-        if ($item) {
-        // Retrieve the current quantity in the destination store
-        $destinationStore = Store::findOrFail($destinationStoreId);
-        $currentQuantity = $destinationStore->items()->where('product_id', $validatedData['product_id'])->sum('quantity');
 
-        // Calculate the new quantity by adding the incoming quantity
-        $newQuantity = $currentQuantity + $item->quantity;
 
-        // Update the destination store with the new quantity
-        $destinationStore->items()->updateOrCreate(
-            ['product_id' => $validatedData['product_id']],
-            ['quantity' => $newQuantity]
-        );
 
-        // Create a transaction record
-        $transaction = new Transaction([
-            'from_store' => $destinationStoreId,
-            'destination_store' => $destinationStoreId,
-            'user_id' => auth()->user()->id,
-            'acceptance_status' => null,
-            'item_id' => $item->id,
-        ]);
 
-        $transaction->save();
-        }
 
-        return redirect()->route('add_item')->with('success_message', 'Item created successfully');
+        return redirect()->route('add_item')->with('success_message','Item created successfully');
 
 
     }

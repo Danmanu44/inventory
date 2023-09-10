@@ -52,12 +52,19 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('add_dispense', [DispenseController::class, 'index'])->name('add_dispense');
+    Route::get('dispense/{client_id}', [DispenseController::class, 'reload'])->name('dispense.reload');
+
     Route::post('/dispense', [DispenseController::class, 'store'])->name('dispense.store');
+    Route::post('/dispense/verify', [DispenseController::class, 'verify'])->name('dispense.verify');
+    Route::get('/dispense/delete/{id}', [DispenseController::class, 'destroy'])->name('dispense.destroy');
+
+
 
 
     Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
     Route::get('/client/index', [ClientController::class, 'index'])->name('client.index');
+
 
 
     Route::get('/item/all_item', [ItemController::class,'index'])->name('all_item');

@@ -21,10 +21,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Validator::extend('exists_in_users', function ($attribute, $value, $parameters, $validator) {
+        Validator::extend('exists_in_clients', function ($attribute, $value, $parameters, $validator) {
 
             // Check if the beneficiary_id exists in the users table
-            return \App\Models\User::where('client_id', $value)->exists();
+            return \App\Models\Client::where('id', $value)->exists();
         });
+
+        Validator::extend('custom_id_exists_in_clients', function ($attribute, $value, $parameters, $validator) {
+
+            // Check if the beneficiary_id exists in the users table
+            return \App\Models\Client::where('custom_id', $value)->exists();
+        });
+
+
     }
 }

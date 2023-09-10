@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->text('phone_number');
             $table->text('address')->nullable();
+            $table->string('email')->nullable();
+
+
             $table->text('ward')->nullable();
+
             $table->text('poll_unit')->nullable();
 
             $table->timestamps();
