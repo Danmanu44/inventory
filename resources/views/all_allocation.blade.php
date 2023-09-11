@@ -14,7 +14,6 @@
                                     <th>Quantity</th>
                                     <th>From Store</th>
                                     <th>To Store</th>
-                                    <th>Sender</th>
                                     <th>Date</th>
                                     <th>Acceptance Status</th>
                                     <th>Action</th>
@@ -27,7 +26,7 @@
                                     <td>{{ $allocation->quantity }}</td>
                                     <td>{{ optional($allocation->fromStore)->name }}</td>
                                     <td>{{ optional($allocation->toStore)->name }}</td>
-                                    <td>{{ $allocation->sender->name }}</td>
+                                    {{-- <td>{{ $allocation->sender->name }}</td> --}}
                                     <td>{{ $allocation->created_at->format('Y-m-d H:i:s') }}</td>
                                     <td>
                                         @if ($allocation->acceptance_status === 'accepted')
@@ -39,22 +38,23 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('edit_allocation', ['id' => $allocation->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
                                             <i class="fa fa-pencil color-muted"></i>
                                         </a>
-                                        <a href="{{ route('delete_allocation', ['id' => $allocation->id]) }}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="fa fa-close color-danger"></i>
                                         </a>
                                     </td>
                                 </tr>
                                 @endforeach
+                                
                                 @foreach($storeItems as $storeItem)
                                 <tr>
                                     <td>{{ $storeItem->product->name }}</td>
                                     <td>{{ $storeItem->quantity }}</td>
                                     <td>{{ optional($storeItem->store)->name }}</td>
                                     <td>{{ optional($storeItem->toStore)->name }}</td>
-                                    <td>{{ $storeItem->sender->name }}</td>
+                                    {{-- <td>{{ $storeItem->sender->name }}</td> --}}
                                     <td>{{ $storeItem->created_at->format('Y-m-d H:i:s') }}</td>
                                     <td>
                                         @if ($storeItem->acceptance_status === 'accepted')

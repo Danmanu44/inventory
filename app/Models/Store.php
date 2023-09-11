@@ -23,4 +23,11 @@ class Store extends Model
         return $this->hasMany(Item::class);
         
     }
+
+        // Define the inverse relationship with the Allocation model
+        public function allocations()
+        {
+            return $this->hasMany(Allocation::class);
+        }
+        
 }

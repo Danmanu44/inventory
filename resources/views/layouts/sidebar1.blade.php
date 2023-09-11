@@ -65,9 +65,10 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Item</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('all_item') }}">All items</a></li>
-                            <li><a href="{{ route('add_item') }}">Add Item</a></li>
+                            <li><a href="{{ route('all_item') }}">View Item</a></li>
+                            <li><a href="{{ route('add_item') }}">New Item</a></li>
                         </ul>
+
                     </li>
                     <li class="nav-label">Unit Allocation</li>
                     <li>
@@ -76,8 +77,8 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Allocations</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('allocation.show') }}">View Allocations</a></li>
-                            <li><a href="{{ route('allocation.create') }}">New Allocations</a></li>
+                            <li><a href="{{ route('view.allocation') }}">View Allocations</a></li>
+                            <li><a href="{{ route('add.allocation') }}">New Allocations</a></li>
                         </ul>
                     </li>
                     <li>

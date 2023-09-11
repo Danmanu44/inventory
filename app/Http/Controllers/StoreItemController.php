@@ -24,6 +24,7 @@ class StoreItemController extends Controller
     public function create()
     {
         $products = Product::get();
+        
         return view('item', compact('products'));
     }
 
@@ -114,7 +115,11 @@ class StoreItemController extends Controller
         return redirect()->route('add_item')->with('success_message','Item created successfully');
 
 
-    }   //
+    }
+
+    public function add(Request $request){
+
+    }
 
 
     /**
