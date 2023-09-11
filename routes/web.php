@@ -7,7 +7,11 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\StoreItemController;
+
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +62,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/dispense/verify', [DispenseController::class, 'verify'])->name('dispense.verify');
     Route::get('/dispense/delete/{id}', [DispenseController::class, 'destroy'])->name('dispense.destroy');
 
+    Route::get('/allocation', 'StoreItemController@create')->name('allocation.create');
+    Route::post('/allocation', 'StoreItemController@index')->name('allocation.show');
+    Route::get('/allocation/delete/{id}', 'StoreItemController@destroy')->name('allocation.destroy');
+
+    Route::post('register/user', [RegisteredUserController::class, 'register'])->name('user.store');
+    Route::get('add_user',[RegisteredUserController::class, 'addUser'])->name('user.create');
 
 
 

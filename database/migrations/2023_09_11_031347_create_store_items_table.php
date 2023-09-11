@@ -11,19 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dispenses', function (Blueprint $table) {
+        Schema::create('store_items', function (Blueprint $table) {
             $table->id();
-            $table->string('client_id'); // Use string data type
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('store_id');
             $table->integer('quantity');
-            $table->text('Description')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
-
-
-
+            $table->string('acceptance')->comment('accepted or null');
             $table->timestamps();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('store_id')->references('id')->on('stores');
+
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dispenses');
+        Schema::dropIfExists('store_items');
     }
 };

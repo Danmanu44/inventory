@@ -7,22 +7,24 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-1">
                         <div class="card-body">
-                            <h3 class="card-title text-white">Products Sold</h3>
+                            <h3 class="card-title text-white">House Hold Registered</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white">8,980</h2>
+                                <p class="text-white mb-0">Dependent : 26,940</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i>
+                                {{-- <i class="fa fa-shopping-cart"></i> --}}
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-2">
                         <div class="card-body">
-                            <h3 class="card-title text-white">Net Profit</h3>
+                            <h3 class="card-title text-white">Total Beneficiaries</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">$ 8541</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white">35,920 individuals</h2>
+                                <p class="text-white mb-0">sum of Household and their Dependent</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                         </div>
@@ -98,6 +100,18 @@
                 </div>
             </div>
 
+
+            <div class="row">
+                <!-- Single Bar Chart -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Single Bar Chart</h4>
+                            <canvas id="singelBarChart" width="500" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="row">

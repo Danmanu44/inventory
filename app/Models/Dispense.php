@@ -15,7 +15,8 @@ class Dispense extends Model
         'client_id',
         'product_id',
         'quantity',
-        'description'
+        'description',
+        'user_id'
     ];
       // Define a method to calculate the amount
   // Define a method to calculate the amount

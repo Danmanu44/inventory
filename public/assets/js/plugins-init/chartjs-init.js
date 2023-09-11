@@ -402,11 +402,11 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+            labels: ["MAKAMA", "ZUNGUR", "MAJIDADI", "DURUM", "TURWUM", "DAN IYA ARDO", "DAWAKI"],
             datasets: [
                 {
                     label: "My First dataset",
-                    data: [40, 55, 75, 81, 56, 55, 40],
+                    data: [1200, 590, 460, 904, 1500, 700, 8900],
                     borderColor: "rgba(117, 113, 249, 0.9)",
                     borderWidth: "0",
                     backgroundColor: "rgba(117, 113, 249, 0.5)"

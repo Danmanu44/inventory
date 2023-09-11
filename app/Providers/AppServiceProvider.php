@@ -32,7 +32,12 @@ class AppServiceProvider extends ServiceProvider
             // Check if the beneficiary_id exists in the users table
             return \App\Models\Client::where('custom_id', $value)->exists();
         });
+        
+        Validator::extend('exist_in_stores', function ($attribute, $value, $parameters, $validator) {
 
+            // Check if the beneficiary_id exists in the users table
+            return \App\Models\Store::where('id', $value)->exists();
+        });
 
     }
 }

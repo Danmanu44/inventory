@@ -92,7 +92,7 @@ class DispenseController extends Controller
         } else {
             // Reduce the product quantity by the requested amount
             $product->quantity -= $request->input('quantity');
-            $product->update();
+
 
 
                     // Retrieve the clients based on client_id
@@ -103,13 +103,22 @@ class DispenseController extends Controller
             return redirect()->route('add_dispense')->with('error_message', 'Beneficiary not found');
         }
 
-        // Create a new dispense record
-        Dispense::create([
-            'client_id' => $client->id,
-            'product_id' => $request->input('product_id'),
-            'quantity' => $request->input('quantity'),
-            'description' => $request->input('description'),
-        ]);
+       try {
+            // Create a new dispense record
+            Dispense::create([
+                'client_id' => $client->id,
+                'product_id' => $request->input('product_id'),
+                'quantity' => $request->input('quantity'),
+                'description' => $request->input('description'),
+                'user_id' => auth()->user()->id
+            ]);
+
+            $product->update();
+       } catch (\Throwable $th) {
+        //throw $th;
+       }
+
+
         $products = Product::get();
         $dispenses = Dispense::all()->where('client_id', $client->id);
 

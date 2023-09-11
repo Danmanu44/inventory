@@ -69,6 +69,17 @@
                             <li><a href="{{ route('add_item') }}">Add Item</a></li>
                         </ul>
                     </li>
+                    <li class="nav-label">Unit Allocation</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Allocations</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('allocation.show') }}">View Allocations</a></li>
+                            <li><a href="{{ route('allocation.create') }}">New Allocations</a></li>
+                        </ul>
+                    </li>
                     <li>
 
                     <li class="mega-menu mega-menu-sm">
@@ -81,6 +92,16 @@
 
                         </ul>
                     <li>
+                        <li class="mega-menu mega-menu-sm">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-note menu-icon"></i><span class="nav-text">User Management</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                {{-- <li><a href="./layout-blank.html">All Dispense</a></li> --}}
+                                <li><a href="{{ route('user.create') }}">Add User</a></li>
+
+                            </ul>
+                        <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
                         </a>
