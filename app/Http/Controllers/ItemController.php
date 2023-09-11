@@ -88,15 +88,18 @@ class ItemController extends Controller
                 );
 
                 // Create a transaction record
-                $transaction = new Transaction([
-                    'from_store' => $destinationStoreId,
-                    'destination_store' => $destinationStoreId,
-                    'user_id' => auth()->user()->id,
-                    'acceptance_status' => null,
-                    'item_id' => $item->id,
-                ]);
+                // $transaction = new Transaction([
+                //     'from_store' => $destinationStoreId,
+                //     'destination_store' => $destinationStoreId,
+                //     'user_id' => auth()->user()->id,
+                //     'acceptance_status' => null,
+                //     'item_id' => $item->id,
+                //     'product_id'=>$validatedData['product_id']
+                // ]);
 
-                $transaction->save();
+                // $transaction->save();
+                
+
                 }
 
 
