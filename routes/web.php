@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AllocationController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DispenseController;
@@ -7,12 +9,6 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
-use App\Http\Controllers\StoreItemController;
-use App\Http\Controllers\TransactionController;
-
-
-
-use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -65,9 +61,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/dispense/verify', [DispenseController::class, 'verify'])->name('dispense.verify');
     Route::get('/dispense/delete/{id}', [DispenseController::class, 'destroy'])->name('dispense.destroy');
 
-    Route::get('/allocation', 'StoreItemController@create')->name('allocation.create');
-    Route::post('/allocation', 'StoreItemController@index')->name('allocation.show');
-    Route::get('/allocation/delete/{id}', 'StoreItemController@destroy')->name('allocation.destroy');
+
+    Route::get('/allocations/view', [AllocationController::class, 'index'])->name('view.allocation');
+    Route::get('/allocations/', [AllocationController::class, 'create'])->name('add.allocation');
+    Route::post('/allocations/add', [AllocationController::class, 'store'])->name('allocation.store');
+    Route::get('/allocation/delete/{id}', [AllocationController::class, 'delete'])->name('allocation.destroy');
+
 
     Route::get('/transaction', [TransactionController::class,'verify'])->name('transaction.verify');
     Route::get('/transaction', [TransactionController::class,'index'])->name('transaction.show');

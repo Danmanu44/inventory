@@ -31,10 +31,17 @@ class Product extends Model
     }
 
     // Product Model
-public function items()
-{
-    return $this->hasMany(Item::class);
-}
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+        // Define the inverse relationship with the Allocation model
+        public function allocations()
+        {
+            return $this->hasMany(Allocation::class);
+        }
+    
 
 public function transaction()
 {
