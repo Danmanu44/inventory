@@ -1,44 +1,46 @@
 <x-app-layout>
     <div class="content-body">
-        <div class="col-lg-12 p-4">
-            <div class="card">
-                <div class="card-header mt-3">
-                    <h4 class="card-title">All Item Products</h4>
-                    <a href="{{ route('add_item') }}" class="btn btn-success float-right">Create Item</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered zero-configuration">
-                            <thead>
-                                <tr>
-                                    <th>Product Name</th>
-                                    <th>Category</th>
-                                    <th>Store Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($items as $item)
-                                <tr>
-                                    <td>{{ $item->product->name }}</td>
-                                    <td>{{ optional($item->product->category)->name }}</td>
-                                    <td>{{ optional($item->store)->name }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td>₦{{ $item->product->price }}</td>
-                                    <td>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
-                                            <i class="fa fa-pencil color-muted"></i>
-                                        </a>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fa fa-close color-danger"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+        <div class="row d-flex justify-content-center mt-5 p-3">
+            <div class="col-lg-8">
+                <div class="card p-3">
+                    <div class="card-header">
+                        <h4 class="card-title bg-dark text-center p-3" style="border-radius: 50px">ADD NEW ITEMS</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form method="POST" action="{{ route('item.store') }}">
+                                @csrf <!-- Add CSRF token field for security -->
+
+
+                                <div class="input-group mb-3">
+                                    <select name="product_id" class="form-control @error('product_id') is-invalid @enderror">
+                                        <option value="">-- Select Product --</option>
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
+                                                {{ $product->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if ($errors->has('product_id'))
+                                    <div class="text-danger mb-3">{{ $errors->first('product_id') }}</div>
+                                @endif
+
+
+                                <div class="input-group mb-3">
+                                    <input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" value="{{ old('quantity') }}">
+                                </div>
+                                @if ($errors->has('quantity'))
+                                    <div class="text-danger mb-3">{{ $errors->first('quantity') }}</div>
+                                @endif
+
+
+
+                                <div class="mt-3 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Save Item</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

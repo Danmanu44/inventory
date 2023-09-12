@@ -78,7 +78,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('view.allocation') }}">View Allocations</a></li>
-                            <li><a href="{{ route('add.allocation') }}">New Allocations</a></li>
+                            <li><a href="{{ route('allocation.create') }}">New Allocations</a></li>
                         </ul>
                     </li>
                     <li>

@@ -12,7 +12,7 @@ class Allocation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['store_id', 'product_id', 'quantity'];
+    protected $fillable = ['store_id', 'product_id', 'quantity','acceptance'];
 
     public function store()
     {

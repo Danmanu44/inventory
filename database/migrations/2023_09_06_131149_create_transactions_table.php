@@ -17,12 +17,14 @@ return new class extends Migration
             $table->unsignedBigInteger('destination_store');
             $table->unsignedBigInteger('user_id');
             $table->enum('acceptance_status', ['accepted', 'rejected'])->nullable();
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('allocation_id');
+
             $table->timestamps();
             $table->foreign('from_store')->references('id')->on('stores');
             $table->foreign('destination_store')->references('id')->on('stores');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('allocation_id')->references('id')->on('allocations');
+
 
         });
     }

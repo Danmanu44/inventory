@@ -16,8 +16,8 @@ class Transaction extends Model
         'destination_store',
         'user_id',
         'acceptance_status',
-        'item_id',
-        'product_id'
+
+        'allocation_id'
     ];
 
     public function sourceStore()

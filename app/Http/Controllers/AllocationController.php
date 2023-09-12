@@ -40,9 +40,29 @@ class AllocationController extends Controller
      * Store a newly created resource in storage.
      */
 
+
+
+public function accept($store_items_id){
+
+    try {
+        //get store item using Id
+        $storeItem= StoreItem::find($store_items_id);
+
+        // update accepted_by column with current user id
+
+
+
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+
+
+
+
+}
+
 public function store(Request $request)
 {
-    // Validate the request data
     $request->validate([
         'store_id' => 'required|exists:stores,id',
         'product_id' => 'required|exists:products,id',
@@ -50,7 +70,7 @@ public function store(Request $request)
     ]);
 
     try {
-        DB::beginTransaction(); // Start a database transaction
+         DB::beginTransaction(); // Start a database transaction
 
         $fromStore = Store::findOrFail($request->input('store_id'));
         $product = Product::findOrFail($request->input('product_id'));
@@ -68,16 +88,16 @@ public function store(Request $request)
                     'product_id' => $product->id,
                 ],
                 [
-                    'quantity' => \DB::raw("quantity - {$request->input('quantity')}"), // Subtract quantity
-                    'acceptance' => 'accepted',
+                    'quantity' => \DB::raw("quantity + {$request->input('quantity')}"), // Add quantity
+
                 ]
             );
 
             // Create an allocation record for the 'fromStore'
-            Allocation::create([
+           $allocation= Allocation::create([
                 'store_id' => $fromStore->id,
                 'product_id' => $product->id,
-                'quantity' => -$request->input('quantity'), // Negative quantity for allocation
+                'quantity' => $request->input('quantity'), // allocated quantity
             ]);
 
             // Create a transaction record with the default 'destination_store' (General Store)
@@ -86,19 +106,22 @@ public function store(Request $request)
                 'destination_store' => 1, // Default ID for General Store
                 'user_id' => auth()->id(), // Assuming you have authentication in place
                 'acceptance_status' => null,
-                'item_id' => $product->id, // Assuming 'item_id' represents the product being transferred
+                'allocation_id' => $allocation->id, // Assuming 'allocation_id' represents the product being transferred
             ]);
 
             DB::commit(); // Commit the transaction
 
-            return redirect()->route('allocation.store')->with('success_message', 'Allocation and transfer successful.');
+            return redirect()->route('allocation.create')->with('success_message', 'Allocation and transfer successful.');
         } else {
-            return redirect()->route('allocation.store')->with('error_message', 'Insufficient product quantity.');
+            return redirect()->route('allocation.create')->with('error_message', 'Insufficient product quantity.');
         }
     } catch (\Exception $e) {
         DB::rollBack(); // Rollback the transaction in case of an exception
         // Handle exceptions and display an error message
-        return redirect()->route('allocation.store')->with('error_message', $e->getMessage());
+         return redirect()->route('allocation.create')->with('error_message', $e->getMessage());
+        // $stores= Store::all();
+        // $products= Product::all();
+        // return view('allocation' ,compact('stores','products'));
     }
 }
 

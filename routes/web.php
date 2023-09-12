@@ -63,9 +63,11 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/allocations/view', [AllocationController::class, 'index'])->name('view.allocation');
-    Route::get('/allocations/', [AllocationController::class, 'create'])->name('add.allocation');
-    Route::post('/allocations/add', [AllocationController::class, 'store'])->name('allocation.store');
+    Route::get('/allocations', [AllocationController::class, 'create'])->name('allocation.create');
+    Route::post('/allocations/create', [AllocationController::class, 'store'])->name('allocation.store');
     Route::get('/allocation/delete/{id}', [AllocationController::class, 'delete'])->name('allocation.destroy');
+    Route::get('/allocations/accptance/{store_item_id}', [AllocationController::class, 'accept'])->name('allocation.accept');
+
 
 
     Route::get('/transaction', [TransactionController::class,'verify'])->name('transaction.verify');
