@@ -19,7 +19,7 @@ class AllocationController extends Controller
     public function index()
     {
         // Retrieve allocations and store items from the database
-        $allocations = Allocation::get();
+        $allocations = Allocation::with('transaction')->get();
         $storeItems = StoreItems::get();
 
         return view('all_allocation', compact('allocations', 'storeItems'));

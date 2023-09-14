@@ -13,32 +13,44 @@
                                     <th>Date</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
-                                    <th>From Store</th>
-                                    <th>To Store</th>
+                                    <th>Source Store</th>
+                                    <th>Destination Store</th>
                                     <th>Acceptance Status</th>
                                     <th>Accepted By</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=0;
+                                @endphp
                                 @foreach($allocations as $allocation)
                                 <tr>
-                                    <td>{{ $allocation->created_at->format('Y-m-d H:i:s') }}</td>
+
+                                    {{-- <td>{{ $storeItems[$i]->quantity }}</td> --}}
+                                    {{-- <td><td>{{'optional'. optional($storeItems)[$i]->user->name.' ID:'.optional($storeItems)[$i]->accepted_by}}</td></td> --}}
+                                    <td>{{$allocation->created_at->format('Y-m-d H:i:s') }}</td>
 
                                     <td>{{ $allocation->product->name }}</td>
                                     <td>{{ $allocation->quantity }}</td>
-                                    {{-- <td>{{ optional($allocation->fromStore)->name }}</td> --}}
-                                    <td>{{ optional($allocation->toStore)->name }}</td>
+
+
+                                    <td>{{ optional($allocation)->transaction->sourceStore->name }}</td>
+                                    <td>{{ optional($allocation)->store->name}}</td>
                                     {{-- <td>{{ $allocation->sender->name }}</td> --}}
                                     <td>
-                                        @if ($allocation->acceptance_status === 'accepted')
+                                        @if ($storeItems[$i]->acceptance === 'accepted')
                                             <span class="badge badge-success">Accepted</span>
-                                        @elseif ($allocation->acceptance_status === 'rejected')
+                                        @elseif ($storeItems[$i]->acceptance === 'rejected')
                                             <span class="badge badge-danger">Rejected</span>
                                         @else
                                             <span class="badge badge-warning">Pending</span>
                                         @endif
                                     </td>
+                                    <td>
+                                        {{$allocation->accepted_by}}
+                                    </td>
+
                                     <td>
                                         <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
                                             <i class="fa fa-pencil color-muted"></i>
@@ -48,15 +60,17 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @php
+                                    $i++
+                                @endphp
                                 @endforeach
 
-                                @foreach($storeItems as $storeItem)
+                                {{-- @foreach($storeItems as $storeItem)
                                 <tr>
                                     <td>{{ $storeItem->product->name }}</td>
                                     <td>{{ $storeItem->quantity }}</td>
                                     <td>{{ optional($storeItem->store)->name }}</td>
                                     <td>{{ optional($storeItem->toStore)->name }}</td>
-                                    {{-- <td>{{ $storeItem->sender->name }}</td> --}}
                                     <td>{{ $storeItem->created_at->format('Y-m-d H:i:s') }}</td>
                                     <td>
                                         @if ($storeItem->acceptance_status === 'accepted')
@@ -67,10 +81,10 @@
                                             <span class="badge badge-warning">Pending</span>
                                         @endif
                                     </td>
-                                    <td>{{$storeItem->items->user->name.' ID:'.$store->accepted_by}}</td>
-                                    
+
+
                                 </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
