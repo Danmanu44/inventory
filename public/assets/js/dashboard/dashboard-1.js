@@ -30,7 +30,19 @@
     });
 
 
-
+    $(document).ready(function() {
+        $(".product-slider").hover(
+            function () {
+                // Add CSS styles to show scrollbar on hover
+                $(this).css("overflow-x", "auto");
+            },
+            function () {
+                // Remove styles to hide scrollbar when not hovered
+                $(this).css("overflow-x", "scroll");
+            }
+        );
+    });
+    
 
 
     $(".tdl-content a").on("click", function() {

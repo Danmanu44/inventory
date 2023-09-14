@@ -9,6 +9,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,9 +28,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/allocations/view', [AllocationController::class, 'index'])->name('view.allocation');
     Route::get('/allocations/', [AllocationController::class, 'create'])->name('add.allocation');
-    Route::post('/allocations/add', [AllocationController::class, 'store'])->name('allocation.store');
+    Route::post('/new-allocation', [AllocationController::class, 'store'])->name('store.allocation');
     Route::get('/allocation/delete/{id}', [AllocationController::class, 'delete'])->name('allocation.destroy');
 
 

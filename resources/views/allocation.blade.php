@@ -8,7 +8,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form method="POST" action="{{ route('allocation.store') }}">
+                            <form method="POST" action="{{ route('store.allocation') }}">
                                 @csrf <!-- Add CSRF token field for security -->
 
                                 <div class="input-group mb-3">

@@ -7,54 +7,84 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-1">
                         <div class="card-body">
-                            <h3 class="card-title text-white">House Hold Registered</h3>
+                            <h3 class="card-title text-white">Household Registered</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">8,980</h2>
-                                <p class="text-white mb-0">Dependent : 26,940</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i>
-                                {{-- <i class="fa fa-shopping-cart"></i> --}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-2">
-                        <div class="card-body">
-                            <h3 class="card-title text-white">Total Beneficiaries</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">35,920 individuals</h2>
-                                <p class="text-white mb-0">sum of Household and their Dependent</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-3">
-                        <div class="card-body">
-                            <h3 class="card-title text-white">New Customers</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white">{{ $clientCount }}</h2>
+                                <p class="text-white mb-0">Dependent: {{ $totalDependents }}</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-4">
+
+
+                <div class="col-lg-3 col-sm-7">
+                    <div class="card gradient-2">
                         <div class="card-body">
-                            <h3 class="card-title text-white">Customer Satisfaction</h3>
+                            <h3 class="card-title text-white">Total Beneficiaries</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">99%</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                @php
+                                    $totalBeneficiaries = $clientCount + ($totalDependents);
+                                @endphp
+                                <h2 class="text-white">{{ number_format($totalBeneficiaries) }}  </h2>
+                                <p class="text-white mb-0">Total Individuals</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card gradient-3">
+                        <div class="card-body">
+                            <h3 class="card-title text-white">Total Allocated Items</h3>
+                            <div class="d-inline-block">
+                                <h2 class="text-white">{{ $userCount }}</h2>
+                                <p class="text-white mb-0">{{ $dateRange }}</p>
+                            </div>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card gradient-4">
+                        <div class="card-body">
+                            <h3 class="card-title text-white">No of Registered Ward</h3>
+                            <div class="d-inline-block">
+                                <h2 class="text-white">{{ $wardCount }}</h2>
+                                <p class="text-white mb-0">Total Registered Wards</p>
+                            </div>
+                            <span class="float-right display-5 opacity-5"><i class="fas fa-building"></i></span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-slider">
+                        @foreach ($products as $product)
+                        <div class="col-lg-3 col-sm-6 product-card">
+                            <div class="card gradient-4">
+                                <div class="card-body">
+                                    <h3 class="card-title  text-white">{{ $product->name }}</h3>
+                                    <div class="d-inline-block">
+                                        <p class=" text-white"><i class="fa fa-cube"></i> Quantity: {{ $product->quantity }}</p>
+                                        <p class="text-white"><i class="fa fa-naira"></i> Price: ₦{{ number_format($product->price, 2) }}</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <div class="row">
                 <div class="col-lg-12">
@@ -99,7 +129,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="row">
                 <!-- Single Bar Chart -->

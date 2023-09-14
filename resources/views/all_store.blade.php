@@ -27,7 +27,7 @@
                                         <td>{{ $store->created_at }}</td>
                                         <td>{{ $store->updated_at }}</td>
                                         <td>
-                                            @if ($store->name !== 'GENERAL STORE')
+                                            @if ($store->name !== 1)
                                                 <!-- Add action buttons for edit and delete -->
                                                 <a href="" class="btn btn-primary">Edit</a>
                                                 <a href="" class="btn btn-danger">Delete</a>

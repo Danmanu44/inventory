@@ -12,6 +12,8 @@ class Client extends Model
         'name',
         'custom_id',
         'phone_number',
+        'LGA',
+        'no_of_dependent',
         'address',
         'ward',
         'poll_unit'

@@ -13,6 +13,12 @@
         {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
+        {{-- my own chart --}}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+
         <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
@@ -512,6 +518,28 @@
                 @if(session('error_message'))
                     showErrorNotification('{{ session('error_message') }}');
                 @endif
+
+                // JavaScript code to render the Morris.js bar chart
+                function renderMorrisChart() {
+                    Morris.Bar({
+                        element: 'morris-bar-chart',
+                        data: [
+                            // Your data here
+                        ],
+                        xkey: 'y',
+                        ykeys: ['a', 'b', 'c'],
+                        labels: ['A', 'B', 'C'],
+                        barColors: ['#FC6C8E', '#7571f9'],
+                        hideHover: 'auto',
+                        gridLineColor: 'transparent',
+                        resize: true
+                    });
+                }
+
+                // Call the function to render the chart
+                renderMorrisChart();
+
+
 
 
         </script>

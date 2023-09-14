@@ -43,8 +43,8 @@ class StoreController extends Controller
         if ($storeCount == 0) {
             // Create a new store record with default values
             Store::create([
-                'name' => 'GENERAL STORE',
-                'address' => 'FEDERAL GOVERNMENT',
+                'name' => 'BAUCHI STATE GENERAL STORE',
+                'address' => 'BAUCHI STATE',
             ]);
         }
     

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
 
 class ClientController extends Controller
 {
@@ -37,8 +36,10 @@ class ClientController extends Controller
             'custom_id' => 'required',
             'name' => 'required',
             'phone_number' => 'required',
+            'no_of_dependent' => 'required|min:1',
+            'LGA' => 'required',
             'ward' => 'required',
-            'polling_unit' => 'required',
+            'poll_unit' => 'required',
             'address' => 'required',
         ]);
 

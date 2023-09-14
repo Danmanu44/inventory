@@ -144,6 +144,19 @@ abbr[data-original-title] {
   cursor: help;
   border-bottom: 0; }
 
+.product-slider {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none; /* Hide the scrollbar (for Firefox) */
+    -ms-overflow-style: none; /* Hide the scrollbar (for IE/Edge) */
+}
+
+.product-card {
+    flex: 0 0 auto;
+    margin-right: 10px; /* Spacing between product cards */
+}
+
+
 address {
   margin-bottom: 1rem;
   font-style: normal;
