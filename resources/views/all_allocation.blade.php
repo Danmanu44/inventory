@@ -10,24 +10,26 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
+                                    <th>Date</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
                                     <th>From Store</th>
                                     <th>To Store</th>
-                                    <th>Date</th>
                                     <th>Acceptance Status</th>
+                                    <th>Accepted By</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($allocations as $allocation)
                                 <tr>
+                                    <td>{{ $allocation->created_at->format('Y-m-d H:i:s') }}</td>
+
                                     <td>{{ $allocation->product->name }}</td>
                                     <td>{{ $allocation->quantity }}</td>
-                                    <td>{{ optional($allocation->fromStore)->name }}</td>
+                                    {{-- <td>{{ optional($allocation->fromStore)->name }}</td> --}}
                                     <td>{{ optional($allocation->toStore)->name }}</td>
                                     {{-- <td>{{ $allocation->sender->name }}</td> --}}
-                                    <td>{{ $allocation->created_at->format('Y-m-d H:i:s') }}</td>
                                     <td>
                                         @if ($allocation->acceptance_status === 'accepted')
                                             <span class="badge badge-success">Accepted</span>
@@ -47,7 +49,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                                
+
                                 @foreach($storeItems as $storeItem)
                                 <tr>
                                     <td>{{ $storeItem->product->name }}</td>
@@ -65,14 +67,8 @@
                                             <span class="badge badge-warning">Pending</span>
                                         @endif
                                     </td>
-                                    <td>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
-                                            <i class="fa fa-pencil color-muted"></i>
-                                        </a>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fa fa-close color-danger"></i>
-                                        </a>
-                                    </td>
+                                    <td>{{$storeItem->items->user->name.' ID:'.$store->accepted_by}}</td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>

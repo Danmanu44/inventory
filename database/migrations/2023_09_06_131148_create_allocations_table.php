@@ -16,11 +16,16 @@ return new class extends Migration
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
+            $table->string('acceptance')->nullable()->comment('accepted or null');
+            $table->unsignedBigInteger('accepted_by')->nullable();
+
+
             $table->timestamps();
 
             // Define foreign key constraints
             $table->foreign('store_id')->references('id')->on('stores');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('accepted_by')->references('id')->on('users');
         });
     }
 

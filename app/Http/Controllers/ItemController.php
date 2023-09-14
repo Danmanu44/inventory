@@ -75,28 +75,31 @@ class ItemController extends Controller
                 $product->update();
 
                 // Retrieve the current quantity in the destination store
-                $destinationStore = Store::findOrFail($destinationStoreId);
-                $currentQuantity = $destinationStore->items()->where('product_id', $validatedData['product_id'])->sum('quantity');
+                // $destinationStore = Store::findOrFail($destinationStoreId);
+                // $currentQuantity = $destinationStore->items()->where('product_id', $validatedData['product_id'])->sum('quantity');
 
                 // Calculate the new quantity by adding the incoming quantity
-                $newQuantity = $currentQuantity + $item->quantity;
+                // $newQuantity = $currentQuantity + $item->quantity;
 
                 // Update the destination store with the new quantity
-                $destinationStore->items()->updateOrCreate(
-                    ['product_id' => $validatedData['product_id']],
-                    ['quantity' => $newQuantity]
-                );
+                // $destinationStore->items()->updateOrCreate(
+                //     ['product_id' => $validatedData['product_id']],
+                //     ['quantity' => $newQuantity]
+                // );
 
                 // Create a transaction record
-                $transaction = new Transaction([
-                    'from_store' => $destinationStoreId,
-                    'destination_store' => $destinationStoreId,
-                    'user_id' => auth()->user()->id,
-                    'acceptance_status' => null,
-                    'item_id' => $item->id,
-                ]);
+                // $transaction = new Transaction([
+                //     'from_store' => $destinationStoreId,
+                //     'destination_store' => $destinationStoreId,
+                //     'user_id' => auth()->user()->id,
+                //     'acceptance_status' => null,
+                //     'item_id' => $item->id,
+                //     'product_id'=>$validatedData['product_id']
+                // ]);
 
-                $transaction->save();
+                // $transaction->save();
+
+
                 }
 
 

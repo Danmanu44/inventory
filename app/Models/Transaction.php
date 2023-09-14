@@ -16,7 +16,8 @@ class Transaction extends Model
         'destination_store',
         'user_id',
         'acceptance_status',
-        'item_id',
+
+        'allocation_id'
     ];
 
     public function sourceStore()
@@ -32,5 +33,9 @@ class Transaction extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }
