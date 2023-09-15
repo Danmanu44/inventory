@@ -63,13 +63,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/allocations/view', [AllocationController::class, 'index'])->name('view.allocation');
-<<<<<<< HEAD
-    Route::get('/allocations/', [AllocationController::class, 'create'])->name('add.allocation');
+    // Route::get('/allocations', [AllocationController::class, 'create'])->name('add.allocation');
     Route::post('/new-allocation', [AllocationController::class, 'store'])->name('store.allocation');
-=======
     Route::get('/allocations', [AllocationController::class, 'create'])->name('allocation.create');
     Route::post('/allocations/create', [AllocationController::class, 'store'])->name('allocation.store');
->>>>>>> 38228ffa789a2beea73d0ac0d9986cb1cb2d68da
     Route::get('/allocation/delete/{id}', [AllocationController::class, 'delete'])->name('allocation.destroy');
     Route::get('/allocations/accptance/{store_item_id}', [AllocationController::class, 'accept'])->name('allocation.accept');
 
