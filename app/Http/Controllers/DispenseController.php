@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Item;
+use App\Models\StoreItems;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,9 +30,11 @@ class DispenseController extends Controller
     public function reload($client_id)
     {
         $products = Product::get();
+        // dd($client_id);
 
         $dispenses = Dispense::where('client_id',$client_id)->get();
         $client = Client::find( $client_id);
+        // dd($dispenses);
 
         return view('dispense', compact('products', 'dispenses', 'client'));
         // return view('dispense', compact('products'));
@@ -77,21 +80,22 @@ class DispenseController extends Controller
             'description' => 'nullable',
         ]);
 
-        // Retrieve the selected product quantity from items table
-        $product = product::find($request->input('product_id'));
 
+
+        // Retrieve the selected product quantity from storeItems table
+        $store_product = StoreItems::all()->where('product_id',$request->input('product_id'))->where('store_id',auth()->user()->store_id)->first();
 
         // Check if the product exists
-        if (!$product) {
+        if (!$store_product) {
             return redirect()->route('add_dispense')->with('error_message', 'Selected product not found');
         }
 
         // Check if the requested quantity is available
-        if ($request->input('quantity') > $product->quantity) {
+        if ($request->input('quantity') > $store_product->quantity) {
             return redirect()->route('add_dispense')->with('error_message', 'Insufficient quantity for the selected product');
         } else {
             // Reduce the product quantity by the requested amount
-            $product->quantity -= $request->input('quantity');
+            $store_product->quantity -= $request->input('quantity');
 
 
 
@@ -110,19 +114,24 @@ class DispenseController extends Controller
                 'product_id' => $request->input('product_id'),
                 'quantity' => $request->input('quantity'),
                 'description' => $request->input('description'),
-                'user_id' => auth()->user()->id
+                'user_id' => auth()->user()->id,
+                'store_id' => auth()->user()->store_id,
             ]);
 
-            $product->update();
-       } catch (\Throwable $th) {
+            $store_product->update();
+       } catch (\Throwable $e) {
         //throw $th;
+        return redirect()->route('dispense.reload',['client_id'=>$client->id])->with('error_message', 'Dispense error : '.$e->getMessage());
+
+
        }
 
 
-        $products = Product::get();
+        // $products = Product::get();
         $dispenses = Dispense::all()->where('client_id', $client->id);
-
         return redirect()->route('dispense.reload',['client_id'=>$client->id])->with('success_message', 'Dispense record created successfully');
+
+
 
 
         }
@@ -159,16 +168,28 @@ class DispenseController extends Controller
     public function destroy($id)
     {
         //
-        $dispense= Dispense::findOrFail($id);
+        try {
+            //code...
+           DB::beginTransaction();
+            $dispense= Dispense::findOrFail($id);
         // dd($dispense);
         $client_id= $dispense->client_id;
+        $store_item=  StoreItems::where('store_id',$dispense->store_id)->first();
 
-        $dispense->product->quantity+= $dispense->quantity;
-        $dispense->product->update();
+        $store_item->quantity+= $dispense->quantity;
+        $store_item->update();
 
 
         $dispense->delete();
+        DB::commit();
         return redirect()->route('dispense.reload',['client_id'=>$client_id])->with('success_message', 'Dispense record deleted successfully');
 
+
+
+        } catch (\Throwable $e) {
+            //throw $th;
+            return redirect()->route('dispense.reload',['client_id'=>$client_id])->with('error_message', 'Error : '.$e.getMessage());
+
+        }
     }
 }

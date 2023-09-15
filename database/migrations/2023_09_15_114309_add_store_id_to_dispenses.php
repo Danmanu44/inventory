@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('dispenses', function (Blueprint $table) {
             //
+            $table->unsignedBigInteger('store_id');
 
-            $table->enum('role',['admin','state','local'])->nullable();
+
+
+            $table->foreign('store_id')->references('id')->on('stores');
+
         });
     }
 
@@ -23,8 +27,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('dispenses', function (Blueprint $table) {
             //
+            $table->unsignedBigInteger('store_id');
+
         });
     }
 };

@@ -41,6 +41,7 @@ class ClientController extends Controller
             'ward' => 'required',
             'poll_unit' => 'required',
             'address' => 'required',
+            'role'=> 'required|in:state,local'
         ]);
 
         // Create a new beneficiary record
@@ -60,7 +61,7 @@ class ClientController extends Controller
 
 
 
-    
+
 
     /**
      * Display the specified resource.

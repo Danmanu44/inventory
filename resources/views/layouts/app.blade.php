@@ -244,8 +244,16 @@
                                                 <li>
                                                     <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                                 </li>
-                                                <li><a href="{{ route('logout') }}"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                            </ul>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+
+
+                                                    <x-responsive-nav-link :href="route('logout')"
+                                                            onclick="event.preventDefault();
+                                                                        this.closest('form').submit();">
+                                                        {{ __('Log Out') }}
+                                                    </x-responsive-nav-link>
+                                                </form>                                             </ul>
                                         </div>
                                     </div>
                                 </li>

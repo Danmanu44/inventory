@@ -39,9 +39,9 @@
                                     <td>{{ optional($allocation)->store->name}}</td>
                                     {{-- <td>{{ $allocation->sender->name }}</td> --}}
                                     <td>
-                                        @if ($storeItems[$i]->acceptance === 'accepted')
+                                        @if (optional($allocation)->acceptance === 'accepted')
                                             <span class="badge badge-success">Accepted</span>
-                                        @elseif ($storeItems[$i]->acceptance === 'rejected')
+                                        @elseif (optional($allocation)->acceptance === 'rejected')
                                             <span class="badge badge-danger">Rejected</span>
                                         @else
                                             <span class="badge badge-warning">Pending</span>
@@ -52,13 +52,16 @@
                                     </td>
 
                                     <td>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="mx-3">
-                                            <i class="fa fa-pencil color-muted"></i>
+                                        @if (!$allocation->acceptance=='accepted')
+                                        <a class="btn btn-primary" href="{{route('allocation.accept',$allocation->id)}}" data-toggle="tooltip" data-placement="top" title="Edit" >
+                                            Accept
                                         </a>
-                                        <a href="" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fa fa-close color-danger"></i>
-                                        </a>
-                                    </td>
+
+                                        @else
+                                            <span class="badge badge-warning">Signed</span>
+                                        @endif
+
+
                                 </tr>
                                 @php
                                     $i++
