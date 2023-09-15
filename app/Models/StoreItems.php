@@ -21,5 +21,7 @@ class StoreItems extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
     
+
 }

@@ -12,7 +12,7 @@ class Allocation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['store_id', 'product_id', 'quantity','acceptance'];
+    protected $fillable = ['store_id', 'product_id', 'quantity','acceptance','accepted_by'];//accepted_by is an id from users table
 
     public function store()
     {
@@ -29,4 +29,11 @@ class Allocation extends Model
     {
         return $this->hasOne(StoreItems::class);
     }
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class, 'allocation_id');
+    }
+
+
+
 }
