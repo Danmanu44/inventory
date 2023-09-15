@@ -39,8 +39,11 @@ class DashboardController extends Controller
         // dd($clientCount);
             // Retrieve the count of unique wards from the Client table
             $wardCount = Client::distinct('ward')->count('ward');
+            $ward_client_data = Client::select('ward', \DB::raw('COUNT(*) as ward_count'))
+        ->groupBy('ward')
+        ->get();
 
-        return view('dashboard', compact('clientCount', 'wardCount', 'totalDependents', 'userCount', 'dateRange', 'products', 'lgasData'));
+        return view('dashboard', compact('clientCount', 'wardCount', 'totalDependents', 'userCount', 'dateRange', 'products', 'lgasData','ward_client_data'));
     }
 
 

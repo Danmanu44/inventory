@@ -30,6 +30,8 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
     <link href="{{ asset('assets/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -503,7 +505,7 @@
     <script src="{{ asset('assets/plugins/toastr/js/toastr.init.js') }}"></script>
 
         <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
-        <script>
+           <script>
             // Function to show success notification with a dynamic message
             function showSuccessNotification(message) {
                 toastr.success(message, 'Success', {
