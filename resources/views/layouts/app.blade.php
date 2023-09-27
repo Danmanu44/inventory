@@ -210,19 +210,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="icons dropdown d-none d-md-flex">
-                                    <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                        <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
-                                    </a>
-                                    <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li><a href="javascript:void()">English</a></li>
-                                                <li><a href="javascript:void()">Dutch</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
+
                                 <li class="icons dropdown">
                                     <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                         <span class="activity active"></span>
@@ -244,8 +232,16 @@
                                                 <li>
                                                     <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                                 </li>
-                                                <li><a href="{{ route('logout') }}"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                            </ul>
+                                                <li>
+                                                    <form action="{{ route('logout') }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" style="background: none; border: none; cursor: pointer;">
+                                                            <i class="icon-key"></i> <span>Logout</span>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                
+                                                                                            </ul>
                                         </div>
                                     </div>
                                 </li>
