@@ -84,6 +84,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
     Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
     Route::get('/client/index', [ClientController::class, 'index'])->name('client.index');
+    Route::get('/client/excell', [ClientController::class, 'excell'])->name('client.excell');
+    Route::post('/client/excell_upload', [ClientController::class, 'excellUpload'])->name('client.excell.upload');
+
+
 
 
 
@@ -94,5 +98,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/client/qrcode', [ClientController::class, 'generateQrcode'])->name('client.qrcode');
+
 
 require __DIR__.'/auth.php';

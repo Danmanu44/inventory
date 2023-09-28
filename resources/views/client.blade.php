@@ -10,7 +10,7 @@
                         <form action="{{ route('client.store') }}" method="POST">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" name="custom_id" class="form-control @error('custom_id') is-invalid @enderror" placeholder="custom_id ID" value="{{ old('custom_id') }}">
+                                <input type="text" name="custom_id" class="form-control @error('custom_id') is-invalid @enderror" placeholder="Custom ID" value="{{ old('custom_id') }}">
                                 @error('custom_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -34,11 +34,19 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>                            
-                            
+                            </div>
+
                             <div class="input-group mb-3">
                                 <input type="number" name="no_of_dependent" class="form-control @error('no_of_dependent') is-invalid @enderror" placeholder="Number of Dependent" value="{{ old('no_of_dependent') }}">
                                 @error('no_of_dependent')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" name="organization" class="form-control @error('ogarnization') is-invalid @enderror" placeholder="Organization" value="{{ old('organization') }}">
+                                @error('ogarnization')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -48,18 +56,27 @@
                             <div class="input-group mb-3">
                                 <select name="LGA" class="form-control @error('LGA') is-invalid @enderror">
                                     <option value="">-- Select LGA --</option>
-                                    <option value="Akko LGA" {{ old('LGA') == 'Akko LGA' ? 'selected' : '' }}>Akko LGA</option>
-                                    <option value="Balanga LGA" {{ old('LGA') == 'Balanga LGA' ? 'selected' : '' }}>Balanga LGA</option>
-                                    <option value="Billiri LGA" {{ old('LGA') == 'Billiri LGA' ? 'selected' : '' }}>Billiri LGA</option>
-                                    <option value="Dukku LGA" {{ old('LGA') == 'Dukku LGA' ? 'selected' : '' }}>Dukku LGA</option>
-                                    <option value="Dunakaye LGA" {{ old('LGA') == 'Dunakaye LGA' ? 'selected' : '' }}>Dunakaye LGA</option>
-                                    <option value="Gombe LGA" {{ old('LGA') == 'Gombe LGA' ? 'selected' : '' }}>Gombe LGA</option>
-                                    <option value="Kaltungo LGA" {{ old('LGA') == 'Kaltungo LGA' ? 'selected' : '' }}>Kaltungo LGA</option>
-                                    <option value="Kwami LGA" {{ old('LGA') == 'Kwami LGA' ? 'selected' : '' }}>Kwami LGA</option>
-                                    <option value="Nafada/Bajoga LGA" {{ old('LGA') == 'Nafada/Bajoga LGA' ? 'selected' : '' }}>Nafada/Bajoga LGA</option>
-                                    <option value="Shongom LGA" {{ old('LGA') == 'Shongom LGA' ? 'selected' : '' }}>Shongom LGA</option>
-                                    <option value="Yamaltu/Deba LGA" {{ old('LGA') == 'Yamaltu/Deba LGA' ? 'selected' : '' }}>Yamaltu/Deba LGA</option>
-                                    <!-- Add other LGAs here -->
+                                    <optgroup label="Bauchi State">
+                                        <option value="Bauchi LGA" {{ old('LGA') == 'Bauchi LGA' ? 'selected' : '' }}>Bauchi LGA</option>
+                                        <option value="Alkaleri LGA" {{ old('LGA') == 'Alkaleri LGA' ? 'selected' : '' }}>Alkaleri LGA</option>
+                                        <option value="Bogoro LGA" {{ old('LGA') == 'Bogoro LGA' ? 'selected' : '' }}>Bogoro LGA</option>
+                                        <option value="Damban LGA" {{ old('LGA') == 'Damban LGA' ? 'selected' : '' }}>Damban LGA</option>
+                                        <option value="Darazo LGA" {{ old('LGA') == 'Darazo LGA' ? 'selected' : '' }}>Darazo LGA</option>
+                                        <option value="Dass LGA" {{ old('LGA') == 'Dass LGA' ? 'selected' : '' }}>Dass LGA</option>
+                                        <option value="Ganjuwa LGA" {{ old('LGA') == 'Ganjuwa LGA' ? 'selected' : '' }}>Ganjuwa LGA</option>
+                                        <option value="Giade LGA" {{ old('LGA') == 'Giade LGA' ? 'selected' : '' }}>Giade LGA</option>
+                                        <option value="Itas/Gadau LGA" {{ old('LGA') == 'Itas/Gadau LGA' ? 'selected' : '' }}>Itas/Gadau LGA</option>
+                                        <option value="Jama'are LGA" {{ old('LGA') == 'Jama\'are LGA' ? 'selected' : '' }}>Jama'are LGA</option>
+                                        <option value="Katagum LGA" {{ old('LGA') == 'Katagum LGA' ? 'selected' : '' }}>Katagum LGA</option>
+                                        <option value="Kirfi LGA" {{ old('LGA') == 'Kirfi LGA' ? 'selected' : '' }}>Kirfi LGA</option>
+                                        <option value="Misau LGA" {{ old('LGA') == 'Misau LGA' ? 'selected' : '' }}>Misau LGA</option>
+                                        <option value="Ningi LGA" {{ old('LGA') == 'Ningi LGA' ? 'selected' : '' }}>Ningi LGA</option>
+                                        <option value="Shira LGA" {{ old('LGA') == 'Shira LGA' ? 'selected' : '' }}>Shira LGA</option>
+                                        <option value="Tafawa Balewa LGA" {{ old('LGA') == 'Tafawa Balewa LGA' ? 'selected' : '' }}>Tafawa Balewa LGA</option>
+                                        <option value="Toro LGA" {{ old('LGA') == 'Toro LGA' ? 'selected' : '' }}>Toro LGA</option>
+                                        <option value="Warji LGA" {{ old('LGA') == 'Warji LGA' ? 'selected' : '' }}>Warji LGA</option>
+                                        <option value="Zaki LGA" {{ old('LGA') == 'Zaki LGA' ? 'selected' : '' }}>Zaki LGA</option>
+                                    </optgroup>
                                 </select>
                             </div>
                             @if ($errors->has('LGA'))

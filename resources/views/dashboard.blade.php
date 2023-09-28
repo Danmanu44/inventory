@@ -3,6 +3,8 @@
 
 
         <div class="container-fluid mt-3">
+            @if(auth()->user()->role=='state')
+
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-1">
@@ -120,12 +122,13 @@
             </div>
 
 
+            @endif
 
 
 
 
             <div class="row">
-               
+
                 <div class="col-xl-6 col-lg-12 col-sm-12 col-xxl-12">
                     <div class="card">
                         <div class="card-body">

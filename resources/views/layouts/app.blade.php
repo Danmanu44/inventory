@@ -12,24 +12,46 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         {{-- my own chart --}}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+        <link href="{{ config('app.url') }}/public/assets/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+        <!-- Chartist -->
+        <link rel="stylesheet" href="{{ config('app.url') }}/public/assets/plugins/chartist/css/chartist.min.css">
+        <link rel="stylesheet" href="{{ config('app.url') }}/public/assets/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+        <!-- Custom Stylesheet -->
+        <link href="{{ config('app.url') }}/public/assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{config('app.url')}}/public/assets/css/icons/simple-line-icons/css/simple-line-icons.css">
 
-        <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+            <!-- Fonts -->
+            <link rel="preconnect" href="https://fonts.bunny.net">
+            <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+            {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+        <style>
+            #scanner {
+                    width: 100%;
+                }
+
+                #qr-result {
+                    margin-top: 20px;
+                    font-size: 24px;
+                }
+        </style>
+
     <!-- Pignose Calender -->
-    <link href="{{asset('assets/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('assets/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
     <!-- Chartist -->
     <link rel="stylesheet" href="{{asset('assets/plugins/chartist/css/chartist.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
-    <link href="{{ asset('assets/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet"> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
@@ -63,7 +85,7 @@
                     <div class="brand-logo">
                         <a href="index.html">
                             <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                            <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                            <span class="logo-compact"><img src="public/assets/images/logo-compact.png" alt=""></span>
                             <span class="brand-title">
                                 <img src="images/logo-text.png" alt="">
                             </span>
@@ -158,7 +180,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
+                                {{-- <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
                                         <i class="mdi mdi-bell-outline"></i>
                                         <span class="badge badge-pill gradient-2">3</span>
                                     </a>
@@ -211,8 +233,8 @@
 
                                         </div>
                                     </div>
-                                </li>
-                                <li class="icons dropdown d-none d-md-flex">
+                                </li> --}}
+                                {{-- <li class="icons dropdown d-none d-md-flex">
                                     <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
                                         <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
                                     </a>
@@ -224,7 +246,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </li>
+                                </li> --}}
                                 <li class="icons dropdown">
                                     <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                         <span class="activity active"></span>
@@ -234,13 +256,13 @@
                                         <div class="dropdown-content-body">
                                             <ul>
                                                 <li>
-                                                    <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                                    <a href=""><i class="fa fa-users "></i> <span>Profile</span></a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="javascript:void()">
                                                         <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                                     </a>
-                                                </li>
+                                                </li> --}}
 
                                                 <hr class="my-2">
                                                 <li>
@@ -279,8 +301,8 @@
                                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./index.html">Home 1</a></li>
-                                    <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                                    <li><a href="public/assets/index.html">Home 1</a></li>
+                                    <!-- <li><a href="public/assets/index-2.html">Home 2</a></li> -->
                                 </ul>
                             </li>
                             <li class="mega-menu mega-menu-sm">
@@ -288,17 +310,17 @@
                                     <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./layout-blank.html">Blank</a></li>
-                                    <li><a href="./layout-one-column.html">One Column</a></li>
-                                    <li><a href="./layout-two-column.html">Two column</a></li>
-                                    <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                                    <li><a href="./layout-vertical.html">Vertical</a></li>
-                                    <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                                    <li><a href="./layout-boxed.html">Boxed</a></li>
-                                    <li><a href="./layout-wide.html">Wide</a></li>
+                                    <li><a href="public/assets/layout-blank.html">Blank</a></li>
+                                    <li><a href="public/assets/layout-one-column.html">One Column</a></li>
+                                    <li><a href="public/assets/layout-two-column.html">Two column</a></li>
+                                    <li><a href="public/assets/layout-compact-nav.html">Compact Nav</a></li>
+                                    <li><a href="public/assets/layout-vertical.html">Vertical</a></li>
+                                    <li><a href="public/assets/layout-horizontal.html">Horizontal</a></li>
+                                    <li><a href="public/assets/layout-boxed.html">Boxed</a></li>
+                                    <li><a href="public/assets/layout-wide.html">Wide</a></li>
 
 
-                                    <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
+                                    <li><a href="public/assets/layout-fixed-header.html">Fixed Header</a></li>
                                     <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
                                 </ul>
                             </li>
@@ -308,9 +330,9 @@
                                     <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./email-inbox.html">Inbox</a></li>
-                                    <li><a href="./email-read.html">Read</a></li>
-                                    <li><a href="./email-compose.html">Compose</a></li>
+                                    <li><a href="public/assets/email-inbox.html">Inbox</a></li>
+                                    <li><a href="public/assets/email-read.html">Read</a></li>
+                                    <li><a href="public/assets/email-compose.html">Compose</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -318,8 +340,8 @@
                                     <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./app-profile.html">Profile</a></li>
-                                    <li><a href="./app-calender.html">Calender</a></li>
+                                    <li><a href="public/assets/app-profile.html">Profile</a></li>
+                                    <li><a href="public/assets/app-calender.html">Calender</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -327,12 +349,12 @@
                                     <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./chart-flot.html">Flot</a></li>
-                                    <li><a href="./chart-morris.html">Morris</a></li>
-                                    <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                                    <li><a href="./chart-chartist.html">Chartist</a></li>
-                                    <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                                    <li><a href="./chart-peity.html">Peity</a></li>
+                                    <li><a href="public/assets/chart-flot.html">Flot</a></li>
+                                    <li><a href="public/assets/chart-morris.html">Morris</a></li>
+                                    <li><a href="public/assets/chart-chartjs.html">Chartjs</a></li>
+                                    <li><a href="public/assets/chart-chartist.html">Chartist</a></li>
+                                    <li><a href="public/assets/chart-sparkline.html">Sparkline</a></li>
+                                    <li><a href="public/assets/chart-peity.html">Peity</a></li>
                                 </ul>
                             </li>
                             <li class="nav-label">UI Components</li>
@@ -341,22 +363,22 @@
                                     <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./ui-accordion.html">Accordion</a></li>
-                                    <li><a href="./ui-alert.html">Alert</a></li>
-                                    <li><a href="./ui-badge.html">Badge</a></li>
-                                    <li><a href="./ui-button.html">Button</a></li>
-                                    <li><a href="./ui-button-group.html">Button Group</a></li>
-                                    <li><a href="./ui-cards.html">Cards</a></li>
-                                    <li><a href="./ui-carousel.html">Carousel</a></li>
-                                    <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                                    <li><a href="./ui-list-group.html">List Group</a></li>
-                                    <li><a href="./ui-media-object.html">Media Object</a></li>
-                                    <li><a href="./ui-modal.html">Modal</a></li>
-                                    <li><a href="./ui-pagination.html">Pagination</a></li>
-                                    <li><a href="./ui-popover.html">Popover</a></li>
-                                    <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                                    <li><a href="./ui-tab.html">Tab</a></li>
-                                    <li><a href="./ui-typography.html">Typography</a></li>
+                                    <li><a href="public/assets/ui-accordion.html">Accordion</a></li>
+                                    <li><a href="public/assets/ui-alert.html">Alert</a></li>
+                                    <li><a href="public/assets/ui-badge.html">Badge</a></li>
+                                    <li><a href="public/assets/ui-button.html">Button</a></li>
+                                    <li><a href="public/assets/ui-button-group.html">Button Group</a></li>
+                                    <li><a href="public/assets/ui-cards.html">Cards</a></li>
+                                    <li><a href="public/assets/ui-carousel.html">Carousel</a></li>
+                                    <li><a href="public/assets/ui-dropdown.html">Dropdown</a></li>
+                                    <li><a href="public/assets/ui-list-group.html">List Group</a></li>
+                                    <li><a href="public/assets/ui-media-object.html">Media Object</a></li>
+                                    <li><a href="public/assets/ui-modal.html">Modal</a></li>
+                                    <li><a href="public/assets/ui-pagination.html">Pagination</a></li>
+                                    <li><a href="public/assets/ui-popover.html">Popover</a></li>
+                                    <li><a href="public/assets/ui-progressbar.html">Progressbar</a></li>
+                                    <li><a href="public/assets/ui-tab.html">Tab</a></li>
+                                    <li><a href="public/assets/ui-typography.html">Typography</a></li>
                                 <!-- </ul>
                             </li>
                             <li>
@@ -364,10 +386,10 @@
                                     <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
                                 </a>
                                 <ul aria-expanded="false"> -->
-                                    <li><a href="./uc-nestedable.html">Nestedable</a></li>
-                                    <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                                    <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                                    <li><a href="./uc-toastr.html">Toastr</a></li>
+                                    <li><a href="public/assets/uc-nestedable.html">Nestedable</a></li>
+                                    <li><a href="public/assets/uc-noui-slider.html">Noui Slider</a></li>
+                                    <li><a href="public/assets/uc-sweetalert.html">Sweet Alert</a></li>
+                                    <li><a href="public/assets/uc-toastr.html">Toastr</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -381,11 +403,11 @@
                                     <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./form-basic.html">Basic Form</a></li>
-                                    <li><a href="./form-validation.html">Form Validation</a></li>
-                                    <li><a href="./form-step.html">Step Form</a></li>
-                                    <li><a href="./form-editor.html">Editor</a></li>
-                                    <li><a href="./form-picker.html">Picker</a></li>
+                                    <li><a href="public/assets/form-basic.html">Basic Form</a></li>
+                                    <li><a href="public/assets/form-validation.html">Form Validation</a></li>
+                                    <li><a href="public/assets/form-step.html">Step Form</a></li>
+                                    <li><a href="public/assets/form-editor.html">Editor</a></li>
+                                    <li><a href="public/assets/form-picker.html">Picker</a></li>
                                 </ul>
                             </li>
                             <li class="nav-label">Table</li>
@@ -394,8 +416,8 @@
                                     <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
-                                    <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li>
+                                    <li><a href="public/assets/table-basic.html" aria-expanded="false">Basic Table</a></li>
+                                    <li><a href="public/assets/table-datatable.html" aria-expanded="false">Data Table</a></li>
                                 </ul>
                             </li>
                             <li class="nav-label">Pages</li>
@@ -404,16 +426,16 @@
                                     <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><a href="./page-login.html">Login</a></li>
-                                    <li><a href="./page-register.html">Register</a></li>
-                                    <li><a href="./page-lock.html">Lock Screen</a></li>
+                                    <li><a href="public/assets/page-login.html">Login</a></li>
+                                    <li><a href="public/assets/page-register.html">Register</a></li>
+                                    <li><a href="public/assets/page-lock.html">Lock Screen</a></li>
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
                                         <ul aria-expanded="false">
-                                            <li><a href="./page-error-404.html">Error 404</a></li>
-                                            <li><a href="./page-error-403.html">Error 403</a></li>
-                                            <li><a href="./page-error-400.html">Error 400</a></li>
-                                            <li><a href="./page-error-500.html">Error 500</a></li>
-                                            <li><a href="./page-error-503.html">Error 503</a></li>
+                                            <li><a href="public/assets/page-error-404.html">Error 404</a></li>
+                                            <li><a href="public/assets/page-error-403.html">Error 403</a></li>
+                                            <li><a href="public/assets/page-error-400.html">Error 400</a></li>
+                                            <li><a href="public/assets/page-error-500.html">Error 500</a></li>
+                                            <li><a href="public/assets/page-error-503.html">Error 503</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -472,39 +494,35 @@
         </div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/1.0.0/instascan.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-        <script src="{{asset('assets/plugins/common/common.min.js')}}"></script>
-        <script src="{{asset('assets/js/custom.min.js')}}"></script>
-        <script src="{{asset('assets/js/settings.js')}}"></script>
-        <script src="{{asset('assets/js/gleek.js')}}"></script>
-        <script src="{{asset('assets/js/styleSwitcher.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/common/common.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/js/custom.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/js/settings.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/js/gleek.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/js/styleSwitcher.js"></script>
 
         <!-- Chartjs -->
-        <script src="{{asset('assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+        <script src="{{config('app.url')}}/public/assets/plugins/chart.js/Chart.bundle.min.js"></script>
         <!-- Circle progress -->
-        <script src="{{asset('assets/plugins/circle-progress/circle-progress.min.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/circle-progress/circle-progress.min.js"></script>
         <!-- Datamap -->
-        <script src="{{asset('assets/plugins/d3v3/index.js')}}"></script>
-        <script src="{{asset('assets/plugins/topojson/topojson.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datamaps/datamaps.world.min.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/d3v3/index.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/topojson/topojson.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/datamaps/datamaps.world.min.js"></script>
         <!-- Morrisjs -->
-        <script src="{{asset('assets/plugins/raphael/raphael.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/raphael/raphael.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/morris/morris.min.js"></script>
         <!-- Pignose Calender -->
-        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-        <script src="{{asset('assets/plugins/pg-calendar/js/pignose.calendar.min.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/moment/moment.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
         <!-- ChartistJS -->
-        <script src="{{asset('assets/plugins/chartist/js/chartist.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/chartist/js/chartist.min.js"></script>
+        <script src="{{ config('app.url') }}/public/assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-
-    <!-- Toastr -->
-    <script src="{{asset('assets/plugins/toastr/js/toastr.min.js')}}"></script>
-    <script src="{{ asset('assets/plugins/toastr/js/toastr.init.js') }}"></script>
-
-        <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
            <script>
             // Function to show success notification with a dynamic message
             function showSuccessNotification(message) {

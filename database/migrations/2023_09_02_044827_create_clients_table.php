@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('custom_id');
             $table->string('name');
             $table->integer('no_of_dependent');
-            $table->text('phone_number');
+            $table->text('phone_number')->nullable();
             $table->text('address')->nullable();
             $table->string('email')->nullable();
             $table->string('LGA');
             $table->text('ward')->nullable();
             $table->text('poll_unit')->nullable();
+            $table->string('organization')->nullable();
+
 
             $table->timestamps();
         });

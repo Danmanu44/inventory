@@ -21,18 +21,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <select name="role" class="form-control @error('role') is-invalid @enderror">
-                                        <option value="">-- Select Store --</option>
-                                        <option value="state">State Admin</option>
-                                        <option value="local">LGA User</option>
 
-
-                                    </select>
-                                </div>
-                                @if ($errors->has('role'))
-                                    <div class="text-danger mb-3">{{ $errors->first('role') }}</div>
-                                @endif
                                 <div class="input-group mb-3">
                                     <input type="name" id="name" class="form-control block mt-1 w-full" name="name" required autocomplete="name" placeholder="name">
                                 </div>

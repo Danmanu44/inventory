@@ -14,6 +14,10 @@
                                     <tr>
                                         <th class="font-weight-bold text-primary">Name</th>
                                         <th class="font-weight-bold text-success">Phone Number</th>
+                                        <th class="font-weight-bold text-success">Dependant</th>
+                                        <th class="font-weight-bold text-success">Organization</th>
+
+
                                         <th class="font-weight-bold text-success">Ward</th>
                                         <th class="font-weight-bold text-success">Polling Unit</th>
                                         <th class="font-weight-bold text-primary">Address</th>
@@ -27,6 +31,8 @@
                                     <tr>
                                         <td class="font-weight-bold text-dark">{{ $client->name }}</td>
                                         <td class="font-weight-bold text-dark">{{ $client->phone_number }}</td>
+                                        <td class="font-weight-bold text-dark">{{ $client->no_of_dependent }}</td>
+                                        <td class="font-weight-bold text-dark">{{ $client->organization }}</td>
                                         <td class="font-weight-bold text-dark">{{ $client->ward }}</td>
                                         <td class="font-weight-bold text-dark">{{ $client->poll_unit }}</td>
 

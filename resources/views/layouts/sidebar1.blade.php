@@ -7,7 +7,7 @@
                     <li class="nav-label">Dashboard </li>
                     <li>
                         <a class="has-arrow" href="{{route('dashboard')}}" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><i class="fa-heart"></i><span class="nav-text">Dashboard</span>
+                            <i class="fa fa-tags" aria-hidden="true"></i><span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
 
@@ -21,7 +21,7 @@
                     </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Categories</span>
+                            <i class="fa fa-tags" aria-hidden="true"></i><span class="nav-text">Categories</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('all_categories') }}">All Categories</a></li>
@@ -31,7 +31,7 @@
                     </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Products</span>
+                            <i class="fa fa-money" aria-hidden="true"></i><span class="nav-text">Products</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('all_product') }}">All products</a></li>
@@ -58,6 +58,7 @@
                         <ul aria-expanded="false">
                             <li><a href="{{route('client.index')}}">All Baneficiary</a></li>
                             <li><a href="{{route('client.create')}}">Add Baneficiary</a></li>
+                            <li><a href="{{route('client.excell')}}">Baneficiary Bulk Upload</a></li>
 
                         </ul>
                     </li>
@@ -154,6 +155,8 @@
                         <ul aria-expanded="false">
                             <li><a href="{{route('client.index')}}">All Baneficiary</a></li>
                             <li><a href="{{route('client.create')}}">Add Baneficiary</a></li>
+                            <li><a href="{{route('client.excell')}}">Baneficiary Bulk Upload</a></li>
+
 
                         </ul>
                     </li>
