@@ -9,7 +9,7 @@
     <meta name="description" content="Appku - Software Landing Page">
 
     <!-- ========== Page Title ========== -->
-    <title>Appku - Software Landing Page</title>
+    <title>MHADM - Software </title>
 
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
@@ -32,10 +32,10 @@
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    [if lt IE 9]>
       <script src="assets/js/html5/html5shiv.min.js"></script>
       <script src="assets/js/html5/respond.min.js"></script>
-    <![endif]-->
+    [endif]
 
 </head>
 
@@ -78,7 +78,7 @@
                         </button>
 
                         <ul class="nav navbar-nav navbar-right text-white" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li><a href="{{ route('/') }}">Home</a></li>
+                            <li><a href="{{ url('/dashboard') }}">Home</a></li>
 
                             <li><a href="#">Future</a></li>
 
@@ -195,6 +195,33 @@
     </div>
     <!-- End Features -->
 
+    <div id="about" class="about-style-four-area bg-gray default-padding-bottom">
+        <div class="container">
+            
+            <div class="row align-center">
+                <!-- Single Item -->
+                <div class="single-item">
+                    <div class="card-image-big">
+                        <img src="assets/img/kaura.jpg" alt="Card Image">
+                        
+                    </div>
+                
+                </div>
+                <!-- End Single Item -->
+                <div class="custom-image-big">
+                    <div class="card-image-info">
+                        <p class="custom-paragraph">HIS EXCELLENCY</p>
+                        <h3 class="custom-heading">Sen. Bala Abdulkadir Mohammed, Con.</h3>
+                        <h4 class="custom-subheading">Kauran Bauchi</h4>
+                        <h3 class="custom-heading">Executive Governor, Bauchi State</h3>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </div>
+    </div>
+
     <!-- Star About Area
     ============================================= -->
     <div id="about" class="about-style-four-area bg-gray default-padding-bottom">
@@ -213,15 +240,15 @@
                         <h2 style="text-align: center;">Ministry of Humanitarian Affairs & Disaster Management  </h2>
                         <p>
                             The New Commissioner made the call on Wednesday 16th August, 2023 when she officially assumed duty at the Ministry.
-
+                                                
                         </p>
                         <div class="custom-card">
                             <div class="card-image">
                               <h3 style="font-weight: bolder; margin: 0; padding: 0px; text-align: center;">Hon. Hajara Yakubu Wanka</h3>
                             </div>
                           </div>
-
-
+                          
+                              
 
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -273,7 +300,7 @@
                             <h2>Sub-Ministries</h2>
                             <div class="devider"></div>
                             <p>
-                                Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future.
+                                Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future. 
                             </p>
                         </div>
                     </div>
@@ -295,7 +322,7 @@
                             </div>
                         </div>
                     </div>
-
+            
                     <!-- State Emergency Management Agency (SEMA) -->
                     <div class="single-item col-lg-6 col-md-6">
                         <div class="services-style-four wow fadeInUp" data-wow-delay="300ms">
@@ -310,7 +337,7 @@
                             </div>
                         </div>
                     </div>
-
+            
                     <!-- Agency for Persons with Disabilities (APWD) -->
                     <div class="single-item col-lg-6 col-md-6">
                         <div class="services-style-four wow fadeInUp" data-wow-delay="500ms">
@@ -325,7 +352,7 @@
                             </div>
                         </div>
                     </div>
-
+            
                     <!-- Sustainable Development Goals (SDGs) -->
                     <div class="single-item col-lg-6 col-md-6">
                         <div class="services-style-four wow fadeInUp" data-wow-delay="700ms">
@@ -342,64 +369,13 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
     </div>
     <!-- End Services Area -->
 
-    <!-- Start Process
-    ============================================= -->
-    <div id="features" class="process-style-four-area default-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="process-style-four">
-                        <div class="thumb">
-                            <img class="wow fadeInUp" src="assets/img/illustration/5.png" alt="illustration">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="process-style-four info">
-                        <h4>How we work</h4>
-                        <h2>Datamine Work Process</h2>
 
-                        <!-- Single Process-->
-                        <div class="single-process wow fadeInRight" data-wow-delay="300ms">
-                            <div class="number">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <div class="content">
-                                <h4><a href="#">Frame the Problem</a></h4>
-                                <p>
-                                    Continued at up to zealously necessary breakfast. Surrounded sir motionless she end literature.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- End Single Process-->
-
-                        <!-- Single Process-->
-                        <div class="single-process wow fadeInRight" data-wow-delay="500ms">
-                            <div class="number">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <div class="content">
-                                <h4><a href="#">Collect the Data</a></h4>
-                                <p>
-                                    Continued at up to zealously necessary breakfast. Surrounded sir motionless she end literature.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- End Process -->
-
-    <!-- Start Team
+    <!-- Start Team 
     ============================================= -->
     <div id="team" class="team-area bg-gray text-center default-padding bottom-less">
         <!-- Shape -->
@@ -412,7 +388,7 @@
                         <h2>Innovative Team</h2>
                         <div class="devider"></div>
                         <p>
-                            Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future.
+                            Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future. 
                         </p>
                     </div>
                 </div>
@@ -438,11 +414,11 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
     <!-- End Team Area -->
 
-    <!-- Start Pricing
+    <!-- Start Pricing 
     ============================================= -->
     <div id="pricing" class="pricing-area bg-dark default-padding bottom-less">
         <div class="shape" style="background-image: url(assets/img/shape/16.png);"></div>
@@ -465,10 +441,10 @@
             </div>
         </div>
     </div>
-
+    
     <!-- End Pricing Area -->
 
-    <!-- Start Testimonials
+    <!-- Start Testimonials 
     ============================================= -->
     <div class="testimonials-area carousel-shadow default-padding">
         <div class="container">
@@ -478,7 +454,7 @@
                         <h2>What people say</h2>
                         <div class="devider"></div>
                         <p>
-                            Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future.
+                            Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be as it curiosity departure ourselves very extreme future. 
                         </p>
                     </div>
                 </div>
@@ -500,7 +476,7 @@
                                 </div>
                                 <div class="info">
                                     <p>
-                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future.
+                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future. 
                                     </p>
                                 </div>
                                 <div class="reason">
@@ -526,7 +502,7 @@
                                 </div>
                                 <div class="info">
                                     <p>
-                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future.
+                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future.  
                                     </p>
                                 </div>
                                 <div class="reason">
@@ -552,7 +528,7 @@
                                 </div>
                                 <div class="info">
                                     <p>
-                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future.
+                                        Otherwise concealed favourite frankness on be at dashwoods mentions defective at. Sympathize interested simplicity at do projecting care effect increasing terminated. As edward settle limits at in. Chamber reaching abnormally nothing be accesing to the point. very extreme future.  
                                     </p>
                                 </div>
                                 <div class="reason">
@@ -575,7 +551,7 @@
     </div>
     <!-- End Testimonials Area -->
 
-<!-- Start Blog
+<!-- Start Blog 
 ============================================= -->
 <div id="blog" class="blog-area default-padding bg-gray bottom-less">
     <div class="container">
@@ -636,7 +612,7 @@
 
 
 
-    <!-- Start Footer
+    <!-- Start Footer 
     ============================================= -->
     <footer class="bg-dark text-light">
         <div class="container">
@@ -652,7 +628,7 @@
                             </p>
                             <form action="#">
                                 <input type="email" placeholder="Your Email" class="form-control" name="email">
-                                <button type="submit"> <i class="arrow_right"></i></button>
+                                <button type="submit"> <i class="arrow_right"></i></button>  
                             </form>
                         </div>
                     </div>
@@ -771,7 +747,6 @@
         <!-- End Footer Bottom -->
     </footer>
     <!-- End Footer -->
-
 
 <!-- jQuery Frameworks -->
 <script src="assets/js/jquery-3.6.0.min.js"></script>

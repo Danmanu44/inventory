@@ -192,6 +192,103 @@ Table of contents
 	border-color: var(--color-primary); /* Add your primary color here */
   }
 
+  .card-image-info {
+	max-width: 600; /* Set the maximum width for the parent container */
+  	margin: 0 auto;
+	padding: 20px;
+	background: #ffffff;
+	box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+	border-radius: 20px;
+	position: relative;
+	z-index: 1;
+	border-bottom: 5px solid transparent;
+	transition: all 0.35s ease-in-out;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+  }
+
+    .card-image-info:hover {
+	border-color: var(--color-primary); /* Add your primary color here */
+  }
+
+  .card-image-big {
+	max-width: 450px; /* Set the maximum width for the parent container */
+  	margin: 0 auto;
+	padding: 20px;
+	background: #ffffff;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	position: relative;
+	z-index: 1;
+	border-bottom: 5px solid transparent;
+	transition: all 0.35s ease-in-out;
+	overflow: hidden;
+	display: flex; /* Use flexbox to center the image vertically and horizontally */
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .card-image-big:hover {
+	border-color: var(--color-primary); /* Add your primary color here */
+  }
+  
+  .card-image-big img {
+	max-width: 100%; /* Set the maximum width to 100% of the parent container */
+	height: auto;
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+  }
+  
+  .custom-image-big {
+    max-width: 600px;
+    margin: 20px auto;
+
+}
+
+  
+  .card-image-big {
+	max-width: 50%;
+	overflow: hidden;
+	border-radius: 20px;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 200);
+	position: relative;
+	transition: all 0.35s ease-in-out;
+	
+  }
+  
+  .card-image-big h3 {
+	font-weight: bolder;
+	margin: 0; /* Remove default margin */
+	padding: 20px; /* Add specific padding */
+	text-align: center; /* Center the text */
+  }
+
+  .custom-paragraph {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.custom-heading {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.custom-subheading {
+    margin: 4px;
+    padding: 0;
+    text-align: center;
+	font-weight: bolder;
+}
+
+  
+  .card-image-big:hover {
+	border-color: var(--color-primary); /* Add your primary color here */
+  }
   
   
  
